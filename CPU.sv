@@ -2,7 +2,25 @@ module CPU (
 	input logic clk,
 	input logic rst
 );
-
+	
+	logic [31:0] data_in, data_out;
+	logic [31:0] data_addr;
+	
+	RAM data_memory (
+		.clk(clk),
+		.rst(rst),
+		.r(),
+		.w(),
+		.address(data_addr),
+		.mem_in(data_in),
+		.mem_out(data_out)
+	);
+	
+	ROM inst_memory (
+		.clk(clk),
+		.rst(rst)
+	);
+	
 	GPR r0 (
 		.clk(clk),
 		.rst(rst),
