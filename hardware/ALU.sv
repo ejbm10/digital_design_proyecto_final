@@ -1,0 +1,46 @@
+module ALU #(parameter WIDTH = 32) (
+    input  logic [WIDTH - 1:0] A, B,
+    input  logic [2:0] ALUControl,
+    output logic [WIDTH - 1:0] result,
+    output logic N, Z, C, V
+);
+
+logic [WIDTH:0] addResult, subResult;
+logic [WIDTH-1:0] andResult, orResult;
+
+assign andResult = A & B;
+assign orResult  = A | B;
+
+Adder #(WIDTH) adder (
+    .num1(A),
+    .num2(B),
+    .sum(addResult[WIDTH-1:0]),
+    .cout(addResult[WIDTH])
+);
+
+Subtractor #(WIDTH) subtractor (
+    .minuendo(A),
+    .sustraendo(B),
+    .diferencia(subResult[WIDTH-1:0]),
+    .cout(subResult[WIDTH])
+);
+
+always_comb begin
+    case (ALUControl)
+        3'b000: result = andResult;              // AND
+        3'b001: result = orResult;               // OR
+        3'b010: result = addResult[WIDTH-1:0];   // ADD
+        3'b110: result = subResult[WIDTH-1:0];   // SUB
+        default: result = 0;
+    endcase
+end
+
+// Flags
+assign N = result[WIDTH-1];
+assign Z = (result == 0);
+assign C = (ALUControl == 3'b010) ? addResult[WIDTH] :
+           (ALUControl == 3'b110) ? subResult[WIDTH] : 1'b0;
+assign V = ((ALUControl == 3'b010) && (A[WIDTH-1] == B[WIDTH-1]) && (result[WIDTH-1] != A[WIDTH-1])) ||
+           ((ALUControl == 3'b110) && (A[WIDTH-1] != B[WIDTH-1]) && (result[WIDTH-1] != A[WIDTH-1]));
+
+endmodule
