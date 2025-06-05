@@ -1,20 +1,14 @@
-module Adder #(parameter N = 32)(
-    input logic [N-1:0] num1,
-    input logic [N-1:0] num2,
-    output logic [N-1:0] sum,
+module Adder (
+    input logic [31:0] A,
+    input logic [31:0] B,
+    output logic [31:0] S,
     output logic cout
 );
 
-logic tempCarry;
-logic cin = 1'b0;
-
-always_comb begin
-    tempCarry = cin;
-    for (int i = 0; i < N; i++) begin
-        sum[i] = num1[i] ^ num2[i] ^ tempCarry;
-        tempCarry = (num1[i] & num2[i]) | (num1[i] & tempCarry) | (num2[i] & tempCarry);
-    end
-    cout = tempCarry;   // Carry-out
-end
+	logic [32:0] sum;
+	
+	assign sum = A + B;
+	assign S = sum[31:0];
+	assign cout = sum[32];
 
 endmodule

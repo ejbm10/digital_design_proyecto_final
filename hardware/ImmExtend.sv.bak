@@ -1,0 +1,7 @@
+module ImmExtend (
+	input logic [11:0] imm_in,
+	output logic [31:0] imm_out
+);
+
+	assign imm_out 
+

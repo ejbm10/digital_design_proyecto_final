@@ -1,25 +1,16 @@
-module Subtractor #(parameter N = 32)(
-    input logic [N-1:0] minuendo,
-    input logic [N-1:0] sustraendo,
-    output logic [N-1:0] diferencia,
-    output logic cout   
+module Subtractor (
+    input  logic [31:0] A,
+    input  logic [31:0] B,
+    output logic [31:0] S,
+    output logic bout,
+    output logic N
 );
 
-logic [N:0] complemento_dos; 
-logic [N:0] temp_sum;
-logic cout_internal;
+    logic [32:0] diff;
 
-// Complemento a dos: invertir bits y sumar 1
-assign complemento_dos = {1'b0, ~sustraendo} + 1'b1;
-
-// Suma del minuendo + complemento a dos
-Adder #(N) restAdder (
-    .num1(minuendo),
-    .num2(complemento_dos[N-1:0]),  
-    .sum(diferencia),
-    .cout(cout_internal)
-);
-
-assign cout = cout_internal;  // Acarreo de resta
+    assign diff = {1'b0, A} - {1'b0, B}; // Extend to 33 bits to catch borrow
+    assign S = diff[31:0];
+    assign bout = ~diff[32];            // If diff[32] == 0, then borrow occurred
+    assign N = S[31];                   // MSB of result indicates negative
 
 endmodule

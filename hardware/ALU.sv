@@ -1,46 +1,46 @@
-module ALU #(parameter WIDTH = 32) (
-    input  logic [WIDTH - 1:0] A, B,
+module ALU (
+    input  logic [31:0] A, B,
     input  logic [2:0] ALUControl,
-    output logic [WIDTH - 1:0] result,
+    output logic [31:0] ALUResult,
     output logic N, Z, C, V
 );
 
-logic [WIDTH:0] addResult, subResult;
-logic [WIDTH-1:0] andResult, orResult;
+logic [31:0] addResult, subResult, andResult, orResult;
+logic sum_cout, sub_cout;
 
 assign andResult = A & B;
 assign orResult  = A | B;
 
-Adder #(WIDTH) adder (
-    .num1(A),
-    .num2(B),
-    .sum(addResult[WIDTH-1:0]),
-    .cout(addResult[WIDTH])
+Adder adder (
+    .A(A),
+    .B(B),
+    .S(addResult),
+    .cout(sum_cout)
 );
 
-Subtractor #(WIDTH) subtractor (
-    .minuendo(A),
-    .sustraendo(B),
-    .diferencia(subResult[WIDTH-1:0]),
-    .cout(subResult[WIDTH])
+Subtractor subtractor (
+    .A(A),
+    .B(B),
+    .S(subResult),
+    .bout(sub_bout),
+	 .N(N)
 );
 
 always_comb begin
     case (ALUControl)
-        3'b000: result = andResult;              // AND
-        3'b001: result = orResult;               // OR
-        3'b010: result = addResult[WIDTH-1:0];   // ADD
-        3'b110: result = subResult[WIDTH-1:0];   // SUB
-        default: result = 0;
+        3'b000: ALUResult = andResult;              // AND
+        3'b001: ALUResult = orResult;               // OR
+        3'b010: ALUResult = addResult;   				 // ADD
+        3'b110: ALUResult = subResult;   				 // SUB
+        default: ALUResult = 0;
     endcase
 end
 
 // Flags
-assign N = result[WIDTH-1];
-assign Z = (result == 0);
-assign C = (ALUControl == 3'b010) ? addResult[WIDTH] :
-           (ALUControl == 3'b110) ? subResult[WIDTH] : 1'b0;
-assign V = ((ALUControl == 3'b010) && (A[WIDTH-1] == B[WIDTH-1]) && (result[WIDTH-1] != A[WIDTH-1])) ||
-           ((ALUControl == 3'b110) && (A[WIDTH-1] != B[WIDTH-1]) && (result[WIDTH-1] != A[WIDTH-1]));
+assign Z = (ALUResult == 0);
+assign C = (ALUControl == 3'b010) ? sum_cout :
+           (ALUControl == 3'b110) ? sub_cout : 1'b0;
+assign V = ((ALUControl == 3'b010) && (A[31] == B[31]) && (ALUResult[31] != A[31])) ||
+           ((ALUControl == 3'b110) && (A[31] != B[31]) && (ALUResult[31] != A[31]));
 
 endmodule

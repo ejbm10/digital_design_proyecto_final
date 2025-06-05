@@ -1,0 +1,21 @@
+module CPU_tb();
+
+	logic clk, rst;
+	logic [31:0] inst;
+	
+	CPU dut (
+		.clk(clk),
+		.rst(rst),
+		.inst(inst)
+	);
+	
+	always #5 clk = ~clk;
+	
+	initial begin
+		clk = 0;
+		rst = 1;
+		inst = 32'hE1A02007;
+		
+		#1000;
+	end
+endmodule
