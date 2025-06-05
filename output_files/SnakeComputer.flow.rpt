@@ -1,5 +1,5 @@
 Flow report for SnakeComputer
-Fri May 30 22:31:29 2025
+Wed Jun 04 18:25:39 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,10 +40,10 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Fri May 30 22:31:29 2025       ;
+; Flow Status                 ; Successful - Wed Jun 04 18:25:39 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; SnakeComputer                               ;
-; Top-level Entity Name       ; CPU                                         ;
+; Top-level Entity Name       ; RegisterFile                                ;
 ; Family                      ; Cyclone V                                   ;
 ; Device                      ; 5CGXFC7C7F23C8                              ;
 ; Timing Models               ; Final                                       ;
@@ -62,37 +62,41 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/30/2025 22:31:20 ;
+; Start date & time ; 06/04/2025 18:25:28 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SnakeComputer       ;
 +-------------------+---------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                             ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 159209593829887.174866588013628        ; --            ; --          ; --             ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; RAM_tb         ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; RAM_tb                                 ; --            ; --          ; eda_simulation ;
-; EDA_OUTPUT_DATA_FORMAT               ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (SystemVerilog)        ; <None>        ; --          ; --             ;
-; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation ;
-; EDA_TEST_BENCH_FILE                  ; testbenches/RAM_tb.sv                  ; --            ; --          ; RAM_tb         ;
-; EDA_TEST_BENCH_MODULE_NAME           ; RAM_tb                                 ; --            ; --          ; RAM_tb         ;
-; EDA_TEST_BENCH_NAME                  ; RAM_tb                                 ; --            ; --          ; eda_simulation ;
-; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --             ;
-; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; CPU         ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; CPU         ; Top            ;
-; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; CPU         ; Top            ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --          ; --             ;
-; TOP_LEVEL_ENTITY                     ; CPU                                    ; SnakeComputer ; --          ; --             ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                               ;
++--------------------------------------+----------------------------------------+---------------+--------------+-----------------+
+; Assignment Name                      ; Value                                  ; Default Value ; Entity Name  ; Section Id      ;
++--------------------------------------+----------------------------------------+---------------+--------------+-----------------+
+; COMPILER_SIGNATURE_ID                ; 159209593829887.174908312817028        ; --            ; --           ; --              ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --           ; RegisterFile_tb ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --           ; RAM_tb          ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; RegisterFile_tb                        ; --            ; --           ; eda_simulation  ;
+; EDA_OUTPUT_DATA_FORMAT               ; Systemverilog Hdl                      ; --            ; --           ; eda_simulation  ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (SystemVerilog)        ; <None>        ; --           ; --              ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --           ; eda_simulation  ;
+; EDA_TEST_BENCH_FILE                  ; testbenches/RegisterFile_tb.sv         ; --            ; --           ; RegisterFile_tb ;
+; EDA_TEST_BENCH_FILE                  ; testbenches/RAM_tb.sv                  ; --            ; --           ; RAM_tb          ;
+; EDA_TEST_BENCH_MODULE_NAME           ; RegisterFile_tb                        ; --            ; --           ; RegisterFile_tb ;
+; EDA_TEST_BENCH_MODULE_NAME           ; RAM_tb                                 ; --            ; --           ; RAM_tb          ;
+; EDA_TEST_BENCH_NAME                  ; RAM_tb                                 ; --            ; --           ; eda_simulation  ;
+; EDA_TEST_BENCH_NAME                  ; RegisterFile_tb                        ; --            ; --           ; eda_simulation  ;
+; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --           ; eda_simulation  ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --           ; --              ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --           ; --              ;
+; PARTITION_COLOR                      ; -- (Not supported for targeted family) ; --            ; RegisterFile ; Top             ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; -- (Not supported for targeted family) ; --            ; RegisterFile ; Top             ;
+; PARTITION_NETLIST_TYPE               ; -- (Not supported for targeted family) ; --            ; RegisterFile ; Top             ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --           ; --              ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --           ; --              ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --           ; --              ;
+; TOP_LEVEL_ENTITY                     ; RegisterFile                           ; SnakeComputer ; --           ; --              ;
++--------------------------------------+----------------------------------------+---------------+--------------+-----------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------+
@@ -100,8 +104,8 @@ refer to the applicable agreement for further details.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:09     ; 1.0                     ; 4798 MB             ; 00:00:19                           ;
-; Total                  ; 00:00:09     ; --                      ; --                  ; 00:00:19                           ;
+; Analysis & Elaboration ; 00:00:11     ; 1.0                     ; 4774 MB             ; 00:00:27                           ;
+; Total                  ; 00:00:11     ; --                      ; --                  ; 00:00:27                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
