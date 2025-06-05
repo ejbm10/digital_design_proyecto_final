@@ -10,45 +10,34 @@
 # Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv}
+# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:25:48 on Jun 04,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv 
-# -- Compiling module GPR
+# Start time: 19:24:59 on Jun 04,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv 
+# -- Compiling module RAM
 # 
 # Top level modules:
-# 	GPR
-# End time: 18:25:48 on Jun 04,2025, Elapsed time: 0:00:00
+# 	RAM
+# End time: 19:24:59 on Jun 04,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv}
+# 
+# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RAM_tb.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:25:48 on Jun 04,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv 
-# -- Compiling module RegisterFile
+# Start time: 19:24:59 on Jun 04,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RAM_tb.sv 
+# -- Compiling module RAM_tb
 # 
 # Top level modules:
-# 	RegisterFile
-# End time: 18:25:48 on Jun 04,2025, Elapsed time: 0:00:00
+# 	RAM_tb
+# End time: 19:24:59 on Jun 04,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RegisterFile_tb.sv}
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:25:48 on Jun 04,2025
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RegisterFile_tb.sv 
-# -- Compiling module RegisterFile_tb
-# 
-# Top level modules:
-# 	RegisterFile_tb
-# End time: 18:25:48 on Jun 04,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# 
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  RegisterFile_tb
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" RegisterFile_tb 
-# Start time: 18:25:48 on Jun 04,2025
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  RAM_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" RAM_tb 
+# Start time: 19:24:59 on Jun 04,2025
 # Loading sv_std.std
-# Loading work.RegisterFile_tb
-# Loading work.RegisterFile
-# Loading work.GPR
+# Loading work.RAM_tb
+# Loading work.RAM
 # 
 # add wave *
 # view structure
@@ -58,5 +47,5 @@
 # run -all
 # Break key hit
 # Simulation stop requested.
-# End time: 18:26:41 on Jun 04,2025, Elapsed time: 0:00:53
+# End time: 19:26:00 on Jun 04,2025, Elapsed time: 0:01:01
 # Errors: 0, Warnings: 0
