@@ -8,55 +8,55 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/eboli/Documents/Github/digital_design_proyecto_final/simulation/modelsim
-vRAM
+vControlUnit
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1749086699
+Z2 !s110 1749150957
 !i10b 1
-!s100 G6@53[cHRI41XP<@5Oi@e3
-I[a?=B7jk8PMDzgHP^Aibl2
+!s100 dINaR=W?>O:VB2C>BMGQM2
+IbQ4Pbaj1W<cV12J3gW3@K0
 Z3 VDg1SIo80bB@j0V0VzS_@n1
-!s105 RAM_sv_unit
+!s105 ControlUnit_sv_unit
 S1
 R0
-w1749085154
-8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv
-FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv
+w1749150833
+8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv
+FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv
 L0 1
 Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1749086699.000000
-!s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv|
+Z5 !s108 1749150957.000000
+!s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv|
 !i113 1
 Z6 o-sv -work work
 !s92 -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware
 Z7 tCvgOpt 0
-n@r@a@m
-vRAM_tb
+n@control@unit
+vControlUnit_tb
 R1
 R2
 !i10b 1
-!s100 PnN5NK<[^_znETBe[ZEcN1
-I4a6FW7zckPTaK2J[18fA13
+!s100 0F7[kZkSGd2@GWKd3?6bL1
+I@Y:E3Q?1K2H5[h@;^;Q8G1
 R3
-!s105 RAM_tb_sv_unit
+!s105 ControlUnit_tb_sv_unit
 S1
 R0
-w1749086674
-8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RAM_tb.sv
-FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RAM_tb.sv
+w1749150923
+8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/ControlUnit_tb.sv
+FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/ControlUnit_tb.sv
 L0 1
 R4
 r1
 !s85 0
 31
 R5
-!s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RAM_tb.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RAM_tb.sv|
+!s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/ControlUnit_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/ControlUnit_tb.sv|
 !i113 1
 R6
 !s92 -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches
 R7
-n@r@a@m_tb
+n@control@unit_tb

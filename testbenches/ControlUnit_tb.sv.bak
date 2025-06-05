@@ -1,0 +1,25 @@
+module ControlUnit_tb();
+
+	logic [31:0] inst;
+	logic MemToReg, MemWrite, branch, ALUSrc, RegDst, RegWrite;
+	logic [2:0] ALUControl;
+	logic [11:0] op;
+	
+	ControlUnit dut (
+		.inst(inst),
+		.MemToReg(MemToReg),
+		.MemWrite(MemWrite),
+		.branch(branch),
+		.ALUControl(ALUControl),
+		.ALUSrc(ALUSrc),
+		.RegDst(RegDst),
+		.RegWrite(RegWrite),
+		.op(op)
+	);
+	
+	initial begin
+		inst = 32'hE3A00005;
+		
+		#100;
+	end
+endmodule
