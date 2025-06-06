@@ -147,5 +147,8 @@
 # ** Note: $stop    : C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(28)
 #    Time: 25 ps  Iteration: 0  Instance: /CPU_tb
 # Break in Module CPU_tb at C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv line 28
+<<<<<<< HEAD
 # End time: 23:08:15 on Jun 05,2025, Elapsed time: 0:01:09
 # Errors: 0, Warnings: 0
+=======
+>>>>>>> branches

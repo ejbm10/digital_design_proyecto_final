@@ -3,6 +3,12 @@ module ControlUnit (
 	output logic MemToReg,
 	output logic MemWrite,
 	output logic branch,
+	output logic beq,
+	output logic bne,
+	output logic bgt,
+	output logic blt,
+	output logic bge,
+	output logic ble,
 	output logic [2:0] ALUControl,
 	output logic ALUSrc,
 	output logic RegDst,
@@ -15,6 +21,12 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b000;
 				ALUSrc = 0;
 				RegDst = 0;
@@ -24,6 +36,12 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b000;
 				ALUSrc = 0;
 				RegDst = 1;
@@ -33,6 +51,12 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
 				RegDst = 0;
@@ -42,6 +66,12 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
 				RegDst = 1;
@@ -51,6 +81,12 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
 				RegDst = 0;
@@ -60,6 +96,12 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
 				RegDst = 1;
@@ -69,6 +111,12 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
 				RegDst = 0;
@@ -78,6 +126,12 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
 				RegDst = 1;
@@ -87,6 +141,12 @@ module ControlUnit (
 				MemToReg = 1;
 				MemWrite = 0;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
 				RegDst = 1;
@@ -96,30 +156,140 @@ module ControlUnit (
 				MemToReg = 0;
 				MemWrite = 1;
 				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
 				RegDst = 1;
 				RegWrite = 0;
 			end
 			default: begin
-				if (opcode[7:4] == 4'hA) begin // Branch functions
-					MemToReg = 0;
-					MemWrite = 0;
-					branch = 1;
-					ALUControl = 3'b110;
-					ALUSrc = 1;
-					RegDst = 0;
-					RegWrite = 0;
-				end
-				else begin
-					MemToReg = 0;
-					MemWrite = 0;
-					branch = 0;
-					ALUControl = 3'b000;
-					ALUSrc = 0;
-					RegDst = 0;
-					RegWrite = 0;
-				end
+				case (opcode[11:4]) // Branch functions
+					8'hea: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 1;
+						beq = 0;
+						bne = 0;
+						bgt = 0;
+						blt = 0;
+						bge = 0;
+						ble = 0;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					8'h0a: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 0;
+						beq = 1;
+						bne = 0;
+						bgt = 0;
+						blt = 0;
+						bge = 0;
+						ble = 0;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					8'h1a: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 0;
+						beq = 0;
+						bne = 1;
+						bgt = 0;
+						blt = 0;
+						bge = 0;
+						ble = 0;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					8'hca: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 0;
+						beq = 0;
+						bne = 0;
+						bgt = 1;
+						blt = 0;
+						bge = 0;
+						ble = 0;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					8'hba: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 0;
+						beq = 0;
+						bne = 0;
+						bgt = 0;
+						blt = 1;
+						bge = 0;
+						ble = 0;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					8'haa: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 0;
+						beq = 0;
+						bne = 0;
+						bgt = 0;
+						blt = 0;
+						bge = 1;
+						ble = 0;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					8'hda: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 0;
+						beq = 0;
+						bne = 0;
+						bgt = 0;
+						blt = 0;
+						bge = 0;
+						ble = 1;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					default: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 0;
+						beq = 0;
+						bne = 0;
+						bgt = 0;
+						blt = 0;
+						bge = 0;
+						ble = 0;
+						ALUControl = 3'b000;
+						ALUSrc = 0;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+				endcase
 			end
 		endcase
 	end

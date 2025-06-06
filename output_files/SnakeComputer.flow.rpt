@@ -1,5 +1,5 @@
 Flow report for SnakeComputer
-Thu Jun 05 19:34:42 2025
+Thu Jun 05 23:12:33 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Thu Jun 05 19:34:42 2025       ;
+; Flow Status                 ; Successful - Thu Jun 05 23:12:33 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; SnakeComputer                               ;
 ; Top-level Entity Name       ; CPU                                         ;
@@ -62,7 +62,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/05/2025 19:34:30 ;
+; Start date & time ; 06/05/2025 23:12:23 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SnakeComputer       ;
 +-------------------+---------------------+
@@ -73,9 +73,10 @@ refer to the applicable agreement for further details.
 +--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
 ; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id      ;
 +--------------------------------------+----------------------------------------+---------------+-------------+-----------------+
-; COMPILER_SIGNATURE_ID                ; 159209593829887.174917367006456        ; --            ; --          ; --              ;
+; COMPILER_SIGNATURE_ID                ; 159209593829887.174918674308336        ; --            ; --          ; --              ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; CPU_tb          ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; RegisterFile_tb ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; SignExtend_tb   ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; RAM_tb          ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; ControlUnit_tb  ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; ImmExtend_tb    ;
@@ -85,11 +86,13 @@ refer to the applicable agreement for further details.
 ; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation  ;
 ; EDA_TEST_BENCH_FILE                  ; testbenches/CPU_tb.sv                  ; --            ; --          ; CPU_tb          ;
 ; EDA_TEST_BENCH_FILE                  ; testbenches/RegisterFile_tb.sv         ; --            ; --          ; RegisterFile_tb ;
+; EDA_TEST_BENCH_FILE                  ; testbenches/SignExtend_tb.sv           ; --            ; --          ; SignExtend_tb   ;
 ; EDA_TEST_BENCH_FILE                  ; testbenches/RAM_tb.sv                  ; --            ; --          ; RAM_tb          ;
 ; EDA_TEST_BENCH_FILE                  ; testbenches/ControlUnit_tb.sv          ; --            ; --          ; ControlUnit_tb  ;
 ; EDA_TEST_BENCH_FILE                  ; testbenches/ImmExtend_tb.sv            ; --            ; --          ; ImmExtend_tb    ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; CPU_tb                                 ; --            ; --          ; CPU_tb          ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; RegisterFile_tb                        ; --            ; --          ; RegisterFile_tb ;
+; EDA_TEST_BENCH_MODULE_NAME           ; SignExtend_tb                          ; --            ; --          ; SignExtend_tb   ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; RAM_tb                                 ; --            ; --          ; RAM_tb          ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; ControlUnit_tb                         ; --            ; --          ; ControlUnit_tb  ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; ImmExtend_tb                           ; --            ; --          ; ImmExtend_tb    ;
@@ -98,6 +101,7 @@ refer to the applicable agreement for further details.
 ; EDA_TEST_BENCH_NAME                  ; ControlUnit_tb                         ; --            ; --          ; eda_simulation  ;
 ; EDA_TEST_BENCH_NAME                  ; ImmExtend_tb                           ; --            ; --          ; eda_simulation  ;
 ; EDA_TEST_BENCH_NAME                  ; CPU_tb                                 ; --            ; --          ; eda_simulation  ;
+; EDA_TEST_BENCH_NAME                  ; SignExtend_tb                          ; --            ; --          ; eda_simulation  ;
 ; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation  ;
 ; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --              ;
 ; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --              ;
@@ -116,8 +120,8 @@ refer to the applicable agreement for further details.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:12     ; 1.0                     ; 4785 MB             ; 00:00:28                           ;
-; Total                  ; 00:00:12     ; --                      ; --                  ; 00:00:28                           ;
+; Analysis & Elaboration ; 00:00:11     ; 1.0                     ; 4784 MB             ; 00:00:24                           ;
+; Total                  ; 00:00:11     ; --                      ; --                  ; 00:00:24                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

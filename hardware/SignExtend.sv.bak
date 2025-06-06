@@ -1,0 +1,6 @@
+module SignExtend (
+		input logic [23:0] offset,
+		output logic [31:0] offset_out
+);
+
+endmodule
