@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/eboli/Documents/Github/digital_design_proyecto_final/simulation/modelsim
 vAdder
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1749182160
+Z2 !s110 1749186425
 !i10b 1
 !s100 WRaQI=RNmNJ^od_>oaFPi2
 IbFTC>Q[KBXZ^ZzNoQ8@Y>3
@@ -26,7 +26,7 @@ Z5 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z6 !s108 1749182160.000000
+Z6 !s108 1749186425.000000
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv|
 !i113 1
@@ -36,7 +36,7 @@ Z9 tCvgOpt 0
 n@adder
 vALU
 R1
-Z10 !s110 1749182161
+R2
 !i10b 1
 !s100 CKoYNe>3S;0]0@Z1UzdDD2
 IZ5eFNd]_9G3[b3>EO0LP_3
@@ -57,20 +57,20 @@ R6
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv|
 !i113 1
 R7
-Z11 !s92 -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware
+Z10 !s92 -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware
 R9
 n@a@l@u
 vControlUnit
 R1
-R10
+R2
 !i10b 1
-!s100 SK9JPhJzF>ab6[IdzfHGS1
-IWj6k>;eiQdBYR1h@dm<T01
+!s100 7QHFlCkWG[UN3RDIhc=A41
+I5ZdHRJfCnfmP4kkUR3:_]1
 R3
 !s105 ControlUnit_sv_unit
 S1
 R0
-w1749177100
+w1749184004
 8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv
 FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv
 L0 1
@@ -78,25 +78,25 @@ R5
 r1
 !s85 0
 31
-Z12 !s108 1749182161.000000
+R6
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv|
 !i113 1
 R7
-R11
+R10
 R9
 n@control@unit
 vCPU
 R1
-R10
+R2
 !i10b 1
-!s100 FlgZJ819Q8GNhFj6_h4T^0
-IiOP0iEH]8756VTCLRlNki2
+!s100 zOJREgezkiY7I5j:J2:h@1
+IQBHzm=]5JlM23HKN1966f2
 R3
 !s105 CPU_sv_unit
 S1
 R0
-w1749182141
+w1749186124
 8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
 FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
 L0 1
@@ -104,25 +104,25 @@ R5
 r1
 !s85 0
 31
-R12
+R6
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv|
 !i113 1
 R7
-R11
+R10
 R9
 n@c@p@u
 vCPU_tb
 R1
-R10
+!s110 1749186426
 !i10b 1
-!s100 Ez417a>G99EKMhzBhlK7]0
-I?5>K:Pn69h;B@LJ:W0=Jd2
+!s100 Q:LDJ[MFJ`CB<13WeN;TC3
+I?Y4QW[M91@@J`=jQg99zm0
 R3
 !s105 CPU_tb_sv_unit
 S1
 R0
-w1749178315
+w1749186404
 8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv
 FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv
 L0 1
@@ -130,7 +130,7 @@ R5
 r1
 !s85 0
 31
-R12
+!s108 1749186426.000000
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv|
 !i113 1
@@ -140,7 +140,7 @@ R9
 n@c@p@u_tb
 vGPR
 R1
-R10
+R2
 !i10b 1
 !s100 ?cR3Ya3f@_`G5n2h:8Sj<1
 IjPaA]2WD]Bjd][1En_W^?1
@@ -156,17 +156,17 @@ R5
 r1
 !s85 0
 31
-R12
+R6
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv|
 !i113 1
 R7
-R11
+R10
 R9
 n@g@p@r
 vImmExtend
 R1
-R10
+R2
 !i10b 1
 !s100 L3dE3kO?1N_<5oIX2]5D>1
 IaTmQ7cL`_ieM85m;MNKhd0
@@ -182,17 +182,17 @@ R5
 r1
 !s85 0
 31
-R12
+R6
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ImmExtend.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ImmExtend.sv|
 !i113 1
 R7
-R11
+R10
 R9
 n@imm@extend
 vRAM
 R1
-R10
+R2
 !i10b 1
 !s100 G6@53[cHRI41XP<@5Oi@e3
 I[a?=B7jk8PMDzgHP^Aibl2
@@ -208,17 +208,17 @@ R5
 r1
 !s85 0
 31
-R12
+R6
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv|
 !i113 1
 R7
-R11
+R10
 R9
 n@r@a@m
 vRegisterFile
 R1
-R10
+R2
 !i10b 1
 !s100 dg<`LLE0YWoi]m[7Z>[=`1
 I5e9WlR[l>_A`]zEE_jz[Q1
@@ -234,17 +234,17 @@ R5
 r1
 !s85 0
 31
-R12
+R6
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv|
 !i113 1
 R7
-R11
+R10
 R9
 n@register@file
 vSignExtend
 R1
-R10
+R2
 !i10b 1
 !s100 SP_kdCF2=WVH9JHShX6;S0
 I<f>SLa4Vc_8B7b6LS2M0`1
@@ -260,12 +260,12 @@ R5
 r1
 !s85 0
 31
-R12
+R6
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv|
 !i113 1
 R7
-R11
+R10
 R9
 n@sign@extend
 vSubtractor
