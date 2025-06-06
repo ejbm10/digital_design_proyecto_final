@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/eboli/Documents/Github/digital_design_proyecto_final/simulation/modelsim
 vAdder
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1749163590
+Z2 !s110 1749173713
 !i10b 1
 !s100 WRaQI=RNmNJ^od_>oaFPi2
 IbFTC>Q[KBXZ^ZzNoQ8@Y>3
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1749163590.000000
+Z5 !s108 1749173713.000000
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv|
 !i113 1
@@ -62,7 +62,7 @@ R8
 n@a@l@u
 vControlUnit
 R1
-Z10 !s110 1749163591
+Z10 !s110 1749173714
 !i10b 1
 !s100 dINaR=W?>O:VB2C>BMGQM2
 IbQ4Pbaj1W<cV12J3gW3@K0
@@ -78,7 +78,7 @@ R4
 r1
 !s85 0
 31
-Z11 !s108 1749163591.000000
+Z11 !s108 1749173714.000000
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv|
 !i113 1
@@ -90,13 +90,13 @@ vCPU
 R1
 R10
 !i10b 1
-!s100 dMT<V^maj3E`56LC]L53O2
-IS0UUQ<E_2I_FoVDQUhJ0D0
+!s100 NAPYHGUlGz;a_`nmZlj`Y2
+IKYGULn[]U;NaARUJ:V6HQ0
 R3
 !s105 CPU_sv_unit
 S1
 R0
-w1749163161
+w1749172690
 8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
 FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
 L0 1
@@ -116,13 +116,13 @@ vCPU_tb
 R1
 R10
 !i10b 1
-!s100 XUDE?K8gQ=zP@o29Fb[Ul1
-IT9E`7U?LaOzcn=Ufj;fNd2
+!s100 AbM>N_<;YL@_6k0l5Nifc1
+ImTmYd3S_z;SkA:VUCGC5a0
 R3
 !s105 CPU_tb_sv_unit
 S1
 R0
-w1749163544
+w1749173668
 8C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv
 FC:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv
 L0 1
@@ -156,7 +156,7 @@ R4
 r1
 !s85 0
 31
-R11
+R5
 !s107 C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware|C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv|
 !i113 1
@@ -192,7 +192,7 @@ R8
 n@imm@extend
 vRAM
 R1
-R10
+R2
 !i10b 1
 !s100 G6@53[cHRI41XP<@5Oi@e3
 I[a?=B7jk8PMDzgHP^Aibl2

@@ -1,5 +1,5 @@
 Analysis & Elaboration report for SnakeComputer
-Thu Jun 05 16:46:22 2025
+Thu Jun 05 19:34:42 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Thu Jun 05 16:46:22 2025       ;
+; Analysis & Elaboration Status ; Successful - Thu Jun 05 19:34:42 2025       ;
 ; Quartus Prime Version         ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                 ; SnakeComputer                               ;
 ; Top-level Entity Name         ; CPU                                         ;
@@ -194,7 +194,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Jun 05 16:46:09 2025
+    Info: Processing started: Thu Jun 05 19:34:30 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SnakeComputer -c SnakeComputer --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -243,9 +243,9 @@ Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c5" File: 
 Info (144001): Generated suppressed messages file C:/Users/eboli/Documents/Github/digital_design_proyecto_final/output_files/SnakeComputer.map.smsg
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 4785 megabytes
-    Info: Processing ended: Thu Jun 05 16:46:22 2025
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:32
+    Info: Processing ended: Thu Jun 05 19:34:42 2025
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:28
 
 
 +--------------------------------------------+

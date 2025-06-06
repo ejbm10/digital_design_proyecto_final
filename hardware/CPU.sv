@@ -38,14 +38,14 @@ module CPU (
 		.clk(clk),
 		.rst(rst),
 		.MemWrite(MemWrite),
-		.A(A),
+		.A(ALUResult),
 		.WriteData(R3),
 		.ReadData(ReadData)
 	);
 	
 	ALU c4 (
 		.A(R1),
-		.B(R2),
+		.B(imm_mux),
 		.ALUControl(ALUControl),
 		.ALUResult(ALUResult),
 		.N(),
