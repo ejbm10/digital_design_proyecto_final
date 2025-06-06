@@ -13,7 +13,7 @@ _start:
 main_game_loop:
     @ --- Comprobación de tamaño para pasar de nivel ---
 	
-	BL fake_grow_snake         @ Simula que la serpiente crece DESPUÉS del chequeo
+	BL fake_grow_snake         @ Simula que la serpiente crece ANTES del chequeo
 
     CMP R8, #1                 @ validacion Nivel 1
     BEQ check_level1
