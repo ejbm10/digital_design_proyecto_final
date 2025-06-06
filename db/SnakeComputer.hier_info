@@ -1,70 +1,6 @@
 |CPU
-clk => clk.IN2
-rst => rst.IN2
-inst[0] => inst[0].IN3
-inst[1] => inst[1].IN3
-inst[2] => inst[2].IN3
-inst[3] => inst[3].IN3
-inst[4] => inst[4].IN2
-inst[5] => inst[5].IN2
-inst[6] => inst[6].IN2
-inst[7] => inst[7].IN2
-inst[8] => inst[8].IN2
-inst[9] => inst[9].IN2
-inst[10] => inst[10].IN2
-inst[11] => inst[11].IN2
-inst[12] => inst[12].IN2
-inst[13] => inst[13].IN2
-inst[14] => inst[14].IN2
-inst[15] => inst[15].IN2
-inst[16] => inst[16].IN2
-inst[17] => inst[17].IN2
-inst[18] => inst[18].IN2
-inst[19] => inst[19].IN2
-inst[20] => inst[20].IN2
-inst[21] => inst[21].IN2
-inst[22] => inst[22].IN2
-inst[23] => inst[23].IN2
-inst[24] => inst[24].IN1
-inst[25] => inst[25].IN1
-inst[26] => inst[26].IN1
-inst[27] => inst[27].IN1
-inst[28] => inst[28].IN1
-inst[29] => inst[29].IN1
-inst[30] => inst[30].IN1
-inst[31] => inst[31].IN1
-PC[0] << PC[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[1] << PC[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[2] << PC[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[3] << PC[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[4] << PC[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[5] << PC[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[6] << PC[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[7] << PC[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[8] << PC[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[9] << PC[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[10] << PC[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[11] << PC[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[12] << PC[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[13] << PC[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[14] << PC[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[15] << PC[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[16] << PC[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[17] << PC[17]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[18] << PC[18]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[19] << PC[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[20] << PC[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[21] << PC[21]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[22] << PC[22]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[23] << PC[23]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[24] << PC[24]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[25] << PC[25]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[26] << PC[26]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[27] << PC[27]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[28] << PC[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[29] << PC[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[30] << PC[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-PC[31] << PC[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk => clk.IN3
+rst => rst.IN3
 
 
 |CPU|ControlUnit:c1
@@ -16068,7 +16004,140 @@ ReadData[30] <= ReadData.DB_MAX_OUTPUT_PORT_TYPE
 ReadData[31] <= ReadData.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU|ALU:c4
+|CPU|ROM:c4
+clk => inst[0]~reg0.CLK
+clk => inst[1]~reg0.CLK
+clk => inst[2]~reg0.CLK
+clk => inst[3]~reg0.CLK
+clk => inst[4]~reg0.CLK
+clk => inst[5]~reg0.CLK
+clk => inst[6]~reg0.CLK
+clk => inst[7]~reg0.CLK
+clk => inst[8]~reg0.CLK
+clk => inst[9]~reg0.CLK
+clk => inst[10]~reg0.CLK
+clk => inst[11]~reg0.CLK
+clk => inst[12]~reg0.CLK
+clk => inst[13]~reg0.CLK
+clk => inst[14]~reg0.CLK
+clk => inst[15]~reg0.CLK
+clk => inst[16]~reg0.CLK
+clk => inst[17]~reg0.CLK
+clk => inst[18]~reg0.CLK
+clk => inst[19]~reg0.CLK
+clk => inst[20]~reg0.CLK
+clk => inst[21]~reg0.CLK
+clk => inst[22]~reg0.CLK
+clk => inst[23]~reg0.CLK
+clk => inst[24]~reg0.CLK
+clk => inst[25]~reg0.CLK
+clk => inst[26]~reg0.CLK
+clk => inst[27]~reg0.CLK
+clk => inst[28]~reg0.CLK
+clk => inst[29]~reg0.CLK
+clk => inst[30]~reg0.CLK
+clk => inst[31]~reg0.CLK
+rst => inst[0]~reg0.ACLR
+rst => inst[1]~reg0.ACLR
+rst => inst[2]~reg0.ACLR
+rst => inst[3]~reg0.ACLR
+rst => inst[4]~reg0.ACLR
+rst => inst[5]~reg0.ACLR
+rst => inst[6]~reg0.ACLR
+rst => inst[7]~reg0.ACLR
+rst => inst[8]~reg0.ACLR
+rst => inst[9]~reg0.ACLR
+rst => inst[10]~reg0.ACLR
+rst => inst[11]~reg0.ACLR
+rst => inst[12]~reg0.ACLR
+rst => inst[13]~reg0.ACLR
+rst => inst[14]~reg0.ACLR
+rst => inst[15]~reg0.ACLR
+rst => inst[16]~reg0.ACLR
+rst => inst[17]~reg0.ACLR
+rst => inst[18]~reg0.ACLR
+rst => inst[19]~reg0.ACLR
+rst => inst[20]~reg0.ACLR
+rst => inst[21]~reg0.ACLR
+rst => inst[22]~reg0.ACLR
+rst => inst[23]~reg0.ACLR
+rst => inst[24]~reg0.ACLR
+rst => inst[25]~reg0.ACLR
+rst => inst[26]~reg0.ACLR
+rst => inst[27]~reg0.ACLR
+rst => inst[28]~reg0.ACLR
+rst => inst[29]~reg0.ACLR
+rst => inst[30]~reg0.ACLR
+rst => inst[31]~reg0.ACLR
+PC[0] => ~NO_FANOUT~
+PC[1] => ~NO_FANOUT~
+PC[2] => LessThan0.IN60
+PC[2] => instruction_set.RADDR
+PC[3] => LessThan0.IN59
+PC[3] => instruction_set.RADDR1
+PC[4] => LessThan0.IN58
+PC[5] => LessThan0.IN57
+PC[6] => LessThan0.IN56
+PC[7] => LessThan0.IN55
+PC[8] => LessThan0.IN54
+PC[9] => LessThan0.IN53
+PC[10] => LessThan0.IN52
+PC[11] => LessThan0.IN51
+PC[12] => LessThan0.IN50
+PC[13] => LessThan0.IN49
+PC[14] => LessThan0.IN48
+PC[15] => LessThan0.IN47
+PC[16] => LessThan0.IN46
+PC[17] => LessThan0.IN45
+PC[18] => LessThan0.IN44
+PC[19] => LessThan0.IN43
+PC[20] => LessThan0.IN42
+PC[21] => LessThan0.IN41
+PC[22] => LessThan0.IN40
+PC[23] => LessThan0.IN39
+PC[24] => LessThan0.IN38
+PC[25] => LessThan0.IN37
+PC[26] => LessThan0.IN36
+PC[27] => LessThan0.IN35
+PC[28] => LessThan0.IN34
+PC[29] => LessThan0.IN33
+PC[30] => LessThan0.IN32
+PC[31] => LessThan0.IN31
+inst[0] <= inst[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[1] <= inst[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[2] <= inst[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[3] <= inst[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[4] <= inst[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[5] <= inst[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[6] <= inst[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[7] <= inst[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[8] <= inst[8]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[9] <= inst[9]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[10] <= inst[10]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[11] <= inst[11]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[12] <= inst[12]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[13] <= inst[13]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[14] <= inst[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[15] <= inst[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[16] <= inst[16]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[17] <= inst[17]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[18] <= inst[18]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[19] <= inst[19]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[20] <= inst[20]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[21] <= inst[21]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[22] <= inst[22]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[23] <= inst[23]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[24] <= inst[24]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[25] <= inst[25]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[26] <= inst[26]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[27] <= inst[27]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[28] <= inst[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[29] <= inst[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[30] <= inst[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+inst[31] <= inst[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CPU|ALU:c5
 A[0] => A[0].IN2
 A[1] => A[1].IN2
 A[2] => A[2].IN2
@@ -16273,7 +16342,7 @@ C <= C.DB_MAX_OUTPUT_PORT_TYPE
 V <= V.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU|ALU:c4|Adder:adder
+|CPU|ALU:c5|Adder:adder
 A[0] => Add0.IN32
 A[1] => Add0.IN31
 A[2] => Add0.IN30
@@ -16373,7 +16442,7 @@ S[31] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 cout <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU|ALU:c4|Subtractor:subtractor
+|CPU|ALU:c5|Subtractor:subtractor
 A[0] => Add0.IN64
 A[1] => Add0.IN63
 A[2] => Add0.IN62
@@ -16474,7 +16543,7 @@ bout <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 N <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU|ImmExtend:c5
+|CPU|ImmExtend:c6
 imm_in[0] => ShiftRight0.IN37
 imm_in[0] => ShiftLeft0.IN38
 imm_in[1] => ShiftRight0.IN36
@@ -16533,7 +16602,7 @@ imm_out[30] <= imm_out.DB_MAX_OUTPUT_PORT_TYPE
 imm_out[31] <= imm_out.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|CPU|SignExtend:c6
+|CPU|SignExtend:c7
 offset[0] => abs_offset.DATAA
 offset[0] => Add0.IN48
 offset[1] => abs_offset.DATAA

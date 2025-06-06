@@ -8,6 +8,7 @@ vmap work rtl_work
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Subtractor.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv}

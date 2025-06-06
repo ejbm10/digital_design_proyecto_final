@@ -1,8 +1,6 @@
 module CPU (
 	input logic clk,
-	input logic rst,
-	input logic [31:0] inst,
-	output logic [31:0] PC
+	input logic rst
 );
 	
 	logic MemToReg, MemWrite, ALUSrc, RegDst, RegWrite, PCSrc; 
@@ -18,6 +16,8 @@ module CPU (
 	logic [31:0] mem_mux, alu_mux, imm_mux, imm_out, offset_out;
 	
 	logic [2:0] ALUControl;
+	
+	logic [31:0] inst, PC;
 	
 	ControlUnit c1 (
 		.opcode(inst[31:20]),
@@ -58,7 +58,14 @@ module CPU (
 		.ReadData(ReadData)
 	);
 	
-	ALU c4 (
+	ROM c4 (
+		.clk(clk),
+		.rst(rst),
+		.PC(PC),
+		.inst(inst)
+	);
+	
+	ALU c5 (
 		.A(R1),
 		.B(imm_mux),
 		.ALUControl(ALUControl),
@@ -69,12 +76,12 @@ module CPU (
 		.V()
 	);
 	
-	ImmExtend c5 (
+	ImmExtend c6 (
 		.imm_in(inst[11:0]),
 		.imm_out(imm_out)
 	);
 	
-	SignExtend c6 (
+	SignExtend c7 (
 		.offset(inst[23:0]),
 		.offset_out(offset_out)
 	);

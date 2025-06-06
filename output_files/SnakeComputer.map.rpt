@@ -1,5 +1,5 @@
 Analysis & Elaboration report for SnakeComputer
-Thu Jun 05 23:12:33 2025
+Thu Jun 05 23:34:03 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -10,8 +10,8 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   2. Analysis & Elaboration Summary
   3. Parallel Compilation
   4. Analysis & Elaboration Settings
-  5. Port Connectivity Checks: "ALU:c4|Subtractor:subtractor"
-  6. Port Connectivity Checks: "ALU:c4"
+  5. Port Connectivity Checks: "ALU:c5|Subtractor:subtractor"
+  6. Port Connectivity Checks: "ALU:c5"
   7. Analysis & Elaboration Messages
   8. Analysis & Elaboration Suppressed Messages
 
@@ -39,7 +39,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Thu Jun 05 23:12:33 2025       ;
+; Analysis & Elaboration Status ; Successful - Thu Jun 05 23:34:03 2025       ;
 ; Quartus Prime Version         ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                 ; SnakeComputer                               ;
 ; Top-level Entity Name         ; CPU                                         ;
@@ -158,7 +158,7 @@ refer to the applicable agreement for further details.
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ALU:c4|Subtractor:subtractor"                                                       ;
+; Port Connectivity Checks: "ALU:c5|Subtractor:subtractor"                                                       ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -167,7 +167,7 @@ refer to the applicable agreement for further details.
 
 
 +---------------------------------------------------+
-; Port Connectivity Checks: "ALU:c4"                ;
+; Port Connectivity Checks: "ALU:c5"                ;
 +------+--------+----------+------------------------+
 ; Port ; Type   ; Severity ; Details                ;
 +------+--------+----------+------------------------+
@@ -182,7 +182,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Jun 05 23:12:22 2025
+    Info: Processing started: Thu Jun 05 23:33:39 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SnakeComputer -c SnakeComputer --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -226,20 +226,24 @@ Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" Fi
 Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 50
 Info (12128): Elaborating entity "GPR" for hierarchy "RegisterFile:c2|GPR:r0" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv Line: 42
 Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 59
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 70
+Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 66
+Warning (10030): Net "instruction_set.data_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
+Warning (10030): Net "instruction_set.waddr_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
+Warning (10030): Net "instruction_set.we_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 77
 Warning (10858): Verilog HDL warning at ALU.sv(9): object sub_cout used but never assigned File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
 Warning (10030): Net "sub_cout" at ALU.sv(9) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
-Info (12128): Elaborating entity "Adder" for hierarchy "ALU:c4|Adder:adder" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 19
-Info (12128): Elaborating entity "Subtractor" for hierarchy "ALU:c4|Subtractor:subtractor" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 27
-Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 75
-Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 80
+Info (12128): Elaborating entity "Adder" for hierarchy "ALU:c5|Adder:adder" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 19
+Info (12128): Elaborating entity "Subtractor" for hierarchy "ALU:c5|Subtractor:subtractor" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 27
+Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 82
+Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 87
 Warning (10230): Verilog HDL assignment warning at SignExtend.sv(10): truncated value with size 32 to match size of target (24) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 10
 Info (144001): Generated suppressed messages file C:/Users/eboli/Documents/Github/digital_design_proyecto_final/output_files/SnakeComputer.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4784 megabytes
-    Info: Processing ended: Thu Jun 05 23:12:33 2025
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:24
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 4782 megabytes
+    Info: Processing ended: Thu Jun 05 23:34:03 2025
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:20
 
 
 +--------------------------------------------+
