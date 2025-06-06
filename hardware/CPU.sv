@@ -1,14 +1,14 @@
 module CPU (
 	input logic clk,
 	input logic rst,
-	input logic [31:0] inst
+	input logic [31:0] inst,
+	output logic [31:0] PC
 );
 	
-	logic MemToReg, MemWrite, branch,ALUSrc, RegDst, RegWrite;
+	logic MemToReg, MemWrite, branch,ALUSrc, RegDst, RegWrite, PCSrc;
 	logic [31:0] WriteReg, R1, R2, R3, A, ReadData, ALUResult; 
-	logic [31:0] mem_mux, alu_mux, imm_mux, imm_out;
+	logic [31:0] mem_mux, alu_mux, imm_mux, imm_out, offset_out;
 	logic [2:0] ALUControl;
-	
 	
 	ControlUnit c1 (
 		.opcode(inst[31:20]),
@@ -48,8 +48,8 @@ module CPU (
 		.B(imm_mux),
 		.ALUControl(ALUControl),
 		.ALUResult(ALUResult),
-		.N(),
-		.Z(),
+		.N(nflag),
+		.Z(zflag),
 		.C(),
 		.V()
 	);
@@ -59,8 +59,27 @@ module CPU (
 		.imm_out(imm_out)
 	);
 	
+	SignExtend c6 (
+		.offset(inst[23:0]),
+		.offset_out(offset_out)
+	);
+	
 	assign imm_mux = RegDst ? imm_out : R2;
 	assign alu_mux = ALUSrc ? ALUResult : imm_mux;
 	assign mem_mux = MemToReg ? ReadData : alu_mux;
+	assign PCSrc = branch;
+	
+	always_ff @(negedge clk or posedge rst) begin
+		if (rst)
+			PC <= 0;
+		else if (PCSrc) begin
+			if (ALUControl == 3'b010)
+				PC <= (PC + 32'h8) + offset_out;
+			else if (ALUControl == 3'b110)
+				PC <= (PC + 32'h8) - offset_out;
+		end
+		else
+			PC <= PC + 32'h4;
+	end
 	
 endmodule

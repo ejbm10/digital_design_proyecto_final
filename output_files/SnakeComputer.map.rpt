@@ -1,5 +1,5 @@
 Analysis & Elaboration report for SnakeComputer
-Thu Jun 05 19:34:42 2025
+Thu Jun 05 21:55:54 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -12,9 +12,8 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   4. Analysis & Elaboration Settings
   5. Port Connectivity Checks: "ALU:c4|Subtractor:subtractor"
   6. Port Connectivity Checks: "ALU:c4"
-  7. Port Connectivity Checks: "ControlUnit:c1"
-  8. Analysis & Elaboration Messages
-  9. Analysis & Elaboration Suppressed Messages
+  7. Analysis & Elaboration Messages
+  8. Analysis & Elaboration Suppressed Messages
 
 
 
@@ -40,7 +39,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Thu Jun 05 19:34:42 2025       ;
+; Analysis & Elaboration Status ; Successful - Thu Jun 05 21:55:54 2025       ;
 ; Quartus Prime Version         ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                 ; SnakeComputer                               ;
 ; Top-level Entity Name         ; CPU                                         ;
@@ -179,22 +178,13 @@ refer to the applicable agreement for further details.
 +------+--------+----------+------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "ControlUnit:c1"                                                                       ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; branch ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +---------------------------------+
 ; Analysis & Elaboration Messages ;
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Jun 05 19:34:30 2025
+    Info: Processing started: Thu Jun 05 21:55:45 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SnakeComputer -c SnakeComputer --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -228,6 +218,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file hardwar
     Info (12023): Found entity 1: ImmExtend File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ImmExtend.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file testbenches/immextend_tb.sv
     Info (12023): Found entity 1: ImmExtend_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/ImmExtend_tb.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hardware/signextend.sv
+    Info (12023): Found entity 1: SignExtend File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file testbenches/signextend_tb.sv
+    Info (12023): Found entity 1: SignExtend_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/SignExtend_tb.sv Line: 1
 Warning (10236): Verilog HDL Implicit Net warning at ALU.sv(25): created implicit net for "sub_bout" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 25
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
 Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 22
@@ -240,12 +234,14 @@ Warning (10030): Net "sub_cout" at ALU.sv(9) has no driver or initial value, usi
 Info (12128): Elaborating entity "Adder" for hierarchy "ALU:c4|Adder:adder" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 19
 Info (12128): Elaborating entity "Subtractor" for hierarchy "ALU:c4|Subtractor:subtractor" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 27
 Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 60
+Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 65
+Warning (10230): Verilog HDL assignment warning at SignExtend.sv(10): truncated value with size 32 to match size of target (24) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 10
 Info (144001): Generated suppressed messages file C:/Users/eboli/Documents/Github/digital_design_proyecto_final/output_files/SnakeComputer.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4785 megabytes
-    Info: Processing ended: Thu Jun 05 19:34:42 2025
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:28
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4784 megabytes
+    Info: Processing ended: Thu Jun 05 21:55:54 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:19
 
 
 +--------------------------------------------+

@@ -1,12 +1,13 @@
 module CPU_tb();
 
 	logic clk, rst;
-	logic [31:0] inst;
+	logic [31:0] inst, PC;
 	
 	CPU dut (
 		.clk(clk),
 		.rst(rst),
-		.inst(inst)
+		.inst(inst),
+		.PC(PC)
 	);
 	
 	always #5 clk = ~clk;
@@ -43,6 +44,14 @@ module CPU_tb();
 		#10;
 		
 		inst = 32'hE591AA01;
+		
+		#10;
+		
+		inst = 32'hEAFFFFFE;
+		
+		#10;
+		
+		inst = 32'hEA000010;
 		
 		#10;
 		

@@ -80,6 +80,14 @@ set_global_assignment -name SYSTEMVERILOG_FILE testbenches/ImmExtend_tb.sv
 set_global_assignment -name EDA_TEST_BENCH_NAME ImmExtend_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ImmExtend_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ImmExtend_tb -section_id ImmExtend_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME CPU_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id CPU_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME CPU_tb -section_id CPU_tb
+set_global_assignment -name SYSTEMVERILOG_FILE hardware/SignExtend.sv
+set_global_assignment -name SYSTEMVERILOG_FILE testbenches/SignExtend_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME SignExtend_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id SignExtend_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME SignExtend_tb -section_id SignExtend_tb
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -87,8 +95,6 @@ set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/RAM_tb.sv -section_i
 set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/RegisterFile_tb.sv -section_id RegisterFile_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/ControlUnit_tb.sv -section_id ControlUnit_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/ImmExtend_tb.sv -section_id ImmExtend_tb
-set_global_assignment -name EDA_TEST_BENCH_NAME CPU_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id CPU_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME CPU_tb -section_id CPU_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/CPU_tb.sv -section_id CPU_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/SignExtend_tb.sv -section_id SignExtend_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -106,7 +106,7 @@ module ControlUnit (
 					MemToReg = 0;
 					MemWrite = 0;
 					branch = 1;
-					ALUControl = 3'b110;
+					ALUControl = opcode[3] ? 3'b110 : 3'b010;
 					ALUSrc = 1;
 					RegDst = 0;
 					RegWrite = 0;
