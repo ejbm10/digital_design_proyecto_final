@@ -3,33 +3,24 @@
 @ R7 = tamaño actual de la serpiente 
 @ R8 = nivel actual 
 @ R9 = Dirección base del teclado simulado: 0x1000
+@ Dirección hacia donde se mueve: 0x1004
 @ Dirección base de la matriz: 0x2000
 @ Dirección base de la posición de la serpiente: 0x3000
 @ Para la posición de la serpiente se utiliza: (r*10 + c)*4 donde r es la fila y c la columna
 
 
 _start:
-	LDR R4, =UP_ARROW 		   @ Inicializa con movimiento hacia la derecha
     MOV R8, #1                 @ Nivel inicial = 1
 	MOV R7, #2                 @ Tamaño inicial de la serpiente (cabeza + cuerpo)
 	LDR R9, =0x1000        @ Dirección del teclado simulado
-	MOV R12, #0             @ Índice del arreglo
-	PUSH {R8}
+	MOV R12, #0             @ Índice del arreglo simulación teclado
     BL init_game_level1        @ Inicializa el tablero y obstáculos del nivel 1
     B main_game_loop           @ Bucle principal del juego
 
-main_game_loop:
+main_game_loop:	
 	
+	BL move
 	
-	LDR R6, =KEYS          @ Arreglo de teclas simuladas
-    MOV R8, #5             @ Total de iteraciones
-    CMP R12, R8             @ Revisa si ya se realizaron todas las iteraciones
-    BEQ check                @ Si sí, terminar
-	B move
-	
-
-check:	
-	POP {R8}
 	BL fake_grow_snake
     CMP R8, #1                 @ validacion Nivel 1
     BEQ check_level1
@@ -222,26 +213,22 @@ fake_grow_snake:
 @ --- Movimiento de la serpiente ---
 
 move:
-	LDR R0, =0x3000     @ Dirección base
+	PUSH {LR}
+	LDR R0, =0x3000     @ Coordenada de cabeza
     MOV R1, R7          @ R7 contiene el índice final (ej. 1 → 0x3004)
     LSL R1, R1, #2      @ R1 = R1 * 4 (desplazamiento en bytes)
     ADD R0, R0, R1      @ R0 = dirección final
-
-    LDR R1, =0x3000        @ Dirección inicial (cabeza)
     MOV R2, #3             @ Número de movimientos (0x3008, 0x3004, 0x3000)	
 	BL shift_right_loop
 	
-	LDR R0, [R6, R12, LSL #2]   @ Leer tecla simulada
-    STR R0, [R9]               @ Simular que "teclado" puso la tecla en 0x1000
+	BL sim_keys
 
-	POP {R4}
-    PUSH {R4}
+	BL read_key
 	
-	LDR R4, [R9]               @ Leer valor de la tecla desde 0x1000
-	
+	MOV R6, #0
 	LDR R0, =0x3004
     LDR R1, [R0]
-	BL read_key
+	BL move_aux
 
     @ 1. Verificar si está dentro del rango [0, 0x18C]
     CMP R6, #0
@@ -263,45 +250,77 @@ move:
     STR R6, [R0]            @ Guardar nueva posición
     MOV R5, #1              @ Código para cabeza
     STR R5, [R3]            @ Escribir cabeza
-	ADD R12, R12, #1
 	
-    B main_game_loop
+	POP {LR}
+	
+    BX LR
 	
 read_key:
+	LDR R4, [R9]               @ Leer valor de la tecla desde 0x1000
 	LDR R2, =UP_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
 	LDR R2, [R2]	   @ Constante flecha arriba
     CMP R4, R2                 @ ¿Flecha arriba?
-    BEQ up
+    BEQ change_direction
 	
 	LDR R2, =DOWN_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
 	LDR R2, [R2]	   @ Constante flecha arriba
     CMP R4, R2                 @ ¿Flecha abajo?
-    BEQ down
+    BEQ change_direction
 	
 	LDR R2, =LEFT_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
 	LDR R2, [R2]	   @ Constante flecha arriba
 	CMP R4, R2                 @ ¿Flecha izquierda?
-    BEQ left
+    BEQ change_direction
 	
 	LDR R2, =RIGHT_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
 	LDR R2, [R2]	   @ Constante flecha arriba
 	CMP R4, R2                 @ ¿Flecha derecha?
-    BEQ right
+    BEQ change_direction
 	
-	B read_key
-	
-right:
-	ADD R6, R1, #4			@Right
 	BX LR
 	
-left:
-	SUB R6, R1, #4			@Left
+	
+change_direction:
+	STR R4, [R9, #4]               @ Guardar dirección en 0x1004
 	BX LR
-up:
+
+	
+move_aux:
+	LDR R4, [R9, #4]
+	LDR R2, =UP_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
+	LDR R2, [R2]	   @ Constante flecha arriba
+    CMP R4, R2                 @ ¿Flecha arriba?
+    BEQ move_up
+	
+	LDR R2, =DOWN_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
+	LDR R2, [R2]	   @ Constante flecha arriba
+    CMP R4, R2                 @ ¿Flecha abajo?
+   	BEQ move_down
+	
+	LDR R2, =LEFT_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
+	LDR R2, [R2]	   @ Constante flecha arriba
+	CMP R4, R2                 @ ¿Flecha izquierda?
+    BEQ move_left
+	
+	LDR R2, =RIGHT_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
+	LDR R2, [R2]	   @ Constante flecha arriba
+	CMP R4, R2                 @ ¿Flecha derecha?
+    BEQ move_right
+
+move_up:
 	SUB R6, R1, #40			@UP
 	BX LR
-down:
+	
+move_down:
 	ADD R6, R1, #40        @Down
+	BX LR
+	
+move_left:
+	SUB R6, R1, #4			@Left
+	BX LR
+	
+move_right:
+	ADD R6, R1, #4			@Right
 	BX LR
 
 shift_right_loop:
@@ -314,6 +333,18 @@ shift_right_loop:
     BNE shift_right_loop
 	BX LR
 
+sim_keys:
+	LDR R6, =KEYS          @ Arreglo de teclas simuladas
+	MOV R0, #5             @ Total de iteraciones simulación teclado
+    CMP R12, R0             @ Revisa si ya se realizaron todas las iteraciones
+	BEQ sim_end
+	LDR R0, [R6, R12, LSL #2]   @ Leer tecla simulada
+    STR R0, [R9]               @ Simular que "teclado" puso la tecla en 0x1000
+	ADD R12, R12, #1
+	BX LR
+	
+sim_end:
+	BX LR
 
 
 @ --- Gane ---
@@ -341,6 +372,7 @@ UP_ARROW:   .word 0xE048
 DOWN_ARROW: .word 0xE050
 LEFT_ARROW: .word 0xE04B
 RIGHT_ARROW:.word 0xE04D
+DIRECTION:.word 0xE04D
 
 KEYS:                           @ Arreglo de teclas simuladas
     .word 0xE050                @ Abajo
