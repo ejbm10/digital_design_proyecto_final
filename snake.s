@@ -2,19 +2,35 @@
 
 @ R7 = tamaño actual de la serpiente 
 @ R8 = nivel actual 
+@ R9 = Dirección base del teclado simulado: 0x1000
+@ Dirección base de la matriz: 0x2000
+@ Dirección base de la posición de la serpiente: 0x3000
+@ Para la posición de la serpiente se utiliza: (r*10 + c)*4 donde r es la fila y c la columna
+
 
 _start:
-    LDR R9, =0x1000            @ Dirección base del teclado simulado @ Dirección base de la matriz: 0x2000
+	LDR R4, =UP_ARROW 		   @ Inicializa con movimiento hacia la derecha
     MOV R8, #1                 @ Nivel inicial = 1
+	MOV R7, #2                 @ Tamaño inicial de la serpiente (cabeza + cuerpo)
+	LDR R9, =0x1000        @ Dirección del teclado simulado
+	MOV R12, #0             @ Índice del arreglo
+	PUSH {R8}
     BL init_game_level1        @ Inicializa el tablero y obstáculos del nivel 1
-    MOV R7, #2                 @ Tamaño inicial de la serpiente (cabeza + cuerpo)
     B main_game_loop           @ Bucle principal del juego
 
 main_game_loop:
-    @ --- Comprobación de tamaño para pasar de nivel ---
 	
-	BL fake_grow_snake         @ Simula que la serpiente crece ANTES del chequeo
+	
+	LDR R6, =KEYS          @ Arreglo de teclas simuladas
+    MOV R8, #5             @ Total de iteraciones
+    CMP R12, R8             @ Revisa si ya se realizaron todas las iteraciones
+    BEQ check                @ Si sí, terminar
+	B move
+	
 
+check:	
+	POP {R8}
+	BL fake_grow_snake
     CMP R8, #1                 @ validacion Nivel 1
     BEQ check_level1
     CMP R8, #2                 @ validacion Nivel 2
@@ -25,8 +41,9 @@ main_game_loop:
     
     B main_game_loop           @ sigue en el bucle principal
 
+
 check_level1:
-    CMP R7, #3                @ validacion de tamaño 11
+    CMP R7, #10                @ validacion de tamaño 10
     BLT main_game_loop         
     MOV R8, #2                 @ Pasa a nivel 2
     BL init_game_level2        @ Inicializa el tablero para nivel 2
@@ -34,7 +51,7 @@ check_level1:
     B main_game_loop
 
 check_level2:
-    CMP R7, #18                @ validación tamaño 18
+    CMP R7, #10                @ validación tamaño 10
     BLT main_game_loop
     MOV R8, #3                 @ Pasa a nivel 3
     BL init_game_level3        @ Inicializa el tablero para nivel 3
@@ -42,7 +59,7 @@ check_level2:
     B main_game_loop
 
 check_level3:
-    CMP R7, #25                @ validacion tamaño 25
+    CMP R7, #10                @ validacion tamaño 10
     BLT main_game_loop
     BL win_game                @ gano
     B end
@@ -51,6 +68,7 @@ check_level3:
 
 @ NIVEL 1
 init_game_level1:
+	PUSH {R12}
     MOV R12, #100
     LDR R0, =0x2000
     MOV R2, #0
@@ -58,8 +76,7 @@ fill_loop1:
     STR R2, [R0], #4
     SUBS R12, R12, #1
     BNE fill_loop1
-
-
+	POP {R12}
 @ ===== Nivel1 ===== Obstáculos
     LDR R0, =0x2000
     MOV R3, #4
@@ -94,10 +111,16 @@ fill_loop1:
     STR R3, [R0, #(0*10 + 1)*4]   
     MOV R3, #2
     STR R3, [R0, #(0*10 + 0)*4]   
+	LDR R0, =0x3000      @ Dirección de cabeza de serpiente
+	MOV R3, #(0*10 + 1)*4
+    STR R3, [R0]  
+	MOV R3, #(0*10 + 0)*4
+    STR R3, [R0, #4]  
     BX LR
 	
 @ NIVEL 2
 init_game_level2:
+	PUSH {R12}
     MOV R12, #100
     LDR R0, =0x2000
     MOV R2, #0
@@ -105,7 +128,7 @@ fill_loop2:
     STR R2, [R0], #4
     SUBS R12, R12, #1
     BNE fill_loop2
-	
+	POP {R12}
 @ ===== Nivel2 =====
     LDR R0, =0x2000
     MOV R3, #4
@@ -140,6 +163,7 @@ fill_loop2:
 
 @ NIVEL 3
 init_game_level3:
+	PUSH {R12}
     MOV R12, #100
     LDR R1, =0x2000
     MOV R2, #0
@@ -147,7 +171,7 @@ fill_loop3:
     STR R2, [R1], #4
     SUBS R12, R12, #1
     BNE fill_loop3
-
+	POP {R12}
 @ ===== Nivel3 =====
     LDR R0, =0x2000
     MOV R3, #4
@@ -195,12 +219,121 @@ fake_grow_snake:
     ADD R7, R7, #1             @ Aumenta el tamaño de la serpiente en 1 segmento
     BX LR
 
+@ --- Movimiento de la serpiente ---
+
+move:
+	LDR R0, =0x3000     @ Dirección base
+    MOV R1, R7          @ R7 contiene el índice final (ej. 1 → 0x3004)
+    LSL R1, R1, #2      @ R1 = R1 * 4 (desplazamiento en bytes)
+    ADD R0, R0, R1      @ R0 = dirección final
+
+    LDR R1, =0x3000        @ Dirección inicial (cabeza)
+    MOV R2, #3             @ Número de movimientos (0x3008, 0x3004, 0x3000)	
+	BL shift_right_loop
+	
+	LDR R0, [R6, R12, LSL #2]   @ Leer tecla simulada
+    STR R0, [R9]               @ Simular que "teclado" puso la tecla en 0x1000
+
+	POP {R4}
+    PUSH {R4}
+	
+	LDR R4, [R9]               @ Leer valor de la tecla desde 0x1000
+	
+	LDR R0, =0x3004
+    LDR R1, [R0]
+	BL read_key
+
+    @ 1. Verificar si está dentro del rango [0, 0x18C]
+    CMP R6, #0
+    BLT die
+    CMP R6, #0x18C
+    BGT die
+
+    @ 2. Verificar si el valor en la nueva celda es un obstáculo (4)
+    LDR R2, =0x2000
+    ADD R3, R2, R6          @ R3 ← dirección de la nueva celda
+    LDR R4, [R3]            @ R4 ← contenido de la celda
+    CMP R4, #4
+    BEQ die
+	CMP R4, #2
+	BEQ die
+
+    @ Si no hay colisión, actualizar posición de la cabeza
+	LDR R0, =0x3000     @ Dirección base
+    STR R6, [R0]            @ Guardar nueva posición
+    MOV R5, #1              @ Código para cabeza
+    STR R5, [R3]            @ Escribir cabeza
+	ADD R12, R12, #1
+	
+    B main_game_loop
+	
+read_key:
+	LDR R2, =UP_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
+	LDR R2, [R2]	   @ Constante flecha arriba
+    CMP R4, R2                 @ ¿Flecha arriba?
+    BEQ up
+	
+	LDR R2, =DOWN_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
+	LDR R2, [R2]	   @ Constante flecha arriba
+    CMP R4, R2                 @ ¿Flecha abajo?
+    BEQ down
+	
+	LDR R2, =LEFT_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
+	LDR R2, [R2]	   @ Constante flecha arriba
+	CMP R4, R2                 @ ¿Flecha izquierda?
+    BEQ left
+	
+	LDR R2, =RIGHT_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
+	LDR R2, [R2]	   @ Constante flecha arriba
+	CMP R4, R2                 @ ¿Flecha derecha?
+    BEQ right
+	
+	B read_key
+	
+right:
+	ADD R6, R1, #4			@Right
+	BX LR
+	
+left:
+	SUB R6, R1, #4			@Left
+	BX LR
+up:
+	SUB R6, R1, #40			@UP
+	BX LR
+down:
+	ADD R6, R1, #40        @Down
+	BX LR
+
+shift_right_loop:
+    SUB R0, R0, #4         @ Dirección anterior
+    LDR R3, [R0]           @ Leer valor de dirección anterior
+    ADD R4, R0, #4         @ Dirección destino
+    STR R3, [R4]           @ Guardar valor en siguiente dirección
+
+    SUBS R2, R2, #1        @ Decrementar contador
+    BNE shift_right_loop
+	BX LR
+
+
+
 @ --- Gane ---
 win_game:
     B end                      @ Termina el juego
 
+die:
+    LDR R1, [R0]         @ R1 ← offset actual de la cabeza (0 ≤ offset ≤ 0x18C)
+
+    LDR R2, =0x2000      @ Base de la matriz
+    ADD R3, R2, R1       @ R3 ← dirección absoluta de la cabeza
+
+    MOV R4, #8           @ Valor que representa "muerte"
+    STR R4, [R3]         @ Guardar el 8 en la posición de la cabeza
+	
+	B end
+
 end:
-    B end
+    B end               @ Bucle infinito (puedes cambiarlo por otra lógica si lo deseas)
+
 
 .data
 
