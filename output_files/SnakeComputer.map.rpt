@@ -1,5 +1,5 @@
 Analysis & Elaboration report for SnakeComputer
-Thu Jun 05 23:50:48 2025
+Fri Jun 13 23:38:05 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -39,7 +39,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Thu Jun 05 23:50:48 2025       ;
+; Analysis & Elaboration Status ; Successful - Fri Jun 13 23:38:05 2025       ;
 ; Quartus Prime Version         ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                 ; SnakeComputer                               ;
 ; Top-level Entity Name         ; CPU                                         ;
@@ -182,7 +182,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Jun 05 23:50:39 2025
+    Info: Processing started: Fri Jun 13 23:37:56 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SnakeComputer -c SnakeComputer --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -222,26 +222,26 @@ Info (12021): Found 1 design units, including 1 entities, in source file testben
     Info (12023): Found entity 1: SignExtend_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/SignExtend_tb.sv Line: 1
 Warning (10236): Verilog HDL Implicit Net warning at ALU.sv(25): created implicit net for "sub_bout" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 25
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 37
-Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 50
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 38
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 51
 Info (12128): Elaborating entity "GPR" for hierarchy "RegisterFile:c2|GPR:r0" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv Line: 42
-Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 59
-Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 66
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 60
+Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 67
 Warning (10030): Net "instruction_set.data_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
 Warning (10030): Net "instruction_set.waddr_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
 Warning (10030): Net "instruction_set.we_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 77
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 78
 Warning (10858): Verilog HDL warning at ALU.sv(9): object sub_cout used but never assigned File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
 Warning (10030): Net "sub_cout" at ALU.sv(9) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
 Info (12128): Elaborating entity "Adder" for hierarchy "ALU:c5|Adder:adder" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 19
 Info (12128): Elaborating entity "Subtractor" for hierarchy "ALU:c5|Subtractor:subtractor" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 27
-Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 82
-Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 87
+Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 83
+Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 88
 Warning (10230): Verilog HDL assignment warning at SignExtend.sv(10): truncated value with size 32 to match size of target (24) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 10
 Info (144001): Generated suppressed messages file C:/Users/eboli/Documents/Github/digital_design_proyecto_final/output_files/SnakeComputer.map.smsg
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4786 megabytes
-    Info: Processing ended: Thu Jun 05 23:50:48 2025
+    Info: Peak virtual memory: 4787 megabytes
+    Info: Processing ended: Fri Jun 13 23:38:05 2025
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:19
 

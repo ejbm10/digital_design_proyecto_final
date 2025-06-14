@@ -8,12 +8,15 @@ module RAM (
 );
 
 	logic [31:0] MemorySpace [0:99];
+	logic [31:0] Stack [0:9];
 	
 	always_comb begin
 		if (A >= 32'h1000 && A < 32'h1190)
 			ReadData = MemorySpace[(A - 32'h1000) >> 2];
+		else if (A <= 32'hFFFFFFFC)
+			ReadData = Stack[(32'hFFFFFFFC - A) >> 2];
 		else
-			ReadData = 32'hFFFF;
+			ReadData = 32'hFFFFFFFF;
 	end
 	
 	always_ff @(negedge clk or posedge rst) begin
@@ -21,9 +24,14 @@ module RAM (
 			for (int i = 0; i < 100; i++) begin
 				MemorySpace[i] <= 32'h0;
 			end
+			for (int i = 0; i < 10; i++) begin
+				Stack[i] <= 32'h0;
+			end
 		end
-		else if (MemWrite)
+		else if (MemWrite && A >= 32'h1000 && A < 32'h1190)
 			MemorySpace[(A - 32'h1000) >> 2] <= WriteData;
+		else if (MemWrite && A <= 32'hFFFFFFFC)
+			Stack[(32'hFFFFFFFC - A) >> 2] <= WriteData;
 	end
 	
 	

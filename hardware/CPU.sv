@@ -3,7 +3,7 @@ module CPU (
 	input logic rst
 );
 	
-	logic MemToReg, MemWrite, ALUSrc, RegDst, RegWrite, PCSrc; 
+	logic MemToReg, MemWrite, ALUSrc, RegDst, RegWrite, PCSrc, StackSrc; 
 	
 	logic branch, beq, bne, bgt, blt, bge, ble;
 	
@@ -13,11 +13,11 @@ module CPU (
 	
 	logic [31:0] WriteReg, R1, R2, R3, A, ReadData, ALUResult; 
 	
-	logic [31:0] mem_mux, alu_mux, imm_mux, imm_out, offset_out;
+	logic [31:0] mem_mux, alu_mux, imm_mux, imm_out, offset_out, stack_mux, a_mux;
 	
 	logic [2:0] ALUControl;
 	
-	logic [31:0] inst, PC;
+	logic [31:0] inst, PC, SP;
 	
 	ControlUnit c1 (
 		.opcode(inst[31:20]),
@@ -30,6 +30,7 @@ module CPU (
 		.blt(blt),
 		.bge(bge),
 		.ble(ble),
+		.StackSrc(StackSrc),
 		.ALUControl(ALUControl),
 		.ALUSrc(ALUSrc),
 		.RegDst(RegDst),
@@ -53,7 +54,7 @@ module CPU (
 		.clk(clk),
 		.rst(rst),
 		.MemWrite(MemWrite),
-		.A(ALUResult),
+		.A(a_mux),
 		.WriteData(R3),
 		.ReadData(ReadData)
 	);
@@ -66,7 +67,7 @@ module CPU (
 	);
 	
 	ALU c5 (
-		.A(R1),
+		.A(stack_mux),
 		.B(imm_mux),
 		.ALUControl(ALUControl),
 		.ALUResult(ALUResult),
@@ -90,6 +91,9 @@ module CPU (
 	assign alu_mux = ALUSrc ? ALUResult : imm_mux;
 	assign mem_mux = MemToReg ? ReadData : alu_mux;
 	
+	assign stack_mux = StackSrc ? SP : R1;
+	assign a_mux = (StackSrc && (ALUControl == 3'b010)) ? SP : ALUResult;
+	
 	assign PCSrc = branch | 
 						(beq & z_flag) | 
 						(bne & ~z_flag) | 
@@ -107,6 +111,13 @@ module CPU (
 			z_flag <= z_temp;
 			n_flag <= n_temp;
 		end
+	end
+	
+	always_ff @(negedge clk or posedge rst) begin
+		if (rst)
+			SP <= 0;
+		else if (StackSrc)
+			SP <= ALUResult;
 	end
 	
 	always_ff @(negedge clk or posedge rst) begin

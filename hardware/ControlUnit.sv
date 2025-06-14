@@ -9,6 +9,7 @@ module ControlUnit (
 	output logic blt,
 	output logic bge,
 	output logic ble,
+	output logic StackSrc,
 	output logic [2:0] ALUControl,
 	output logic ALUSrc,
 	output logic RegDst,
@@ -27,6 +28,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b000;
 				ALUSrc = 0;
 				RegDst = 0;
@@ -42,6 +44,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b000;
 				ALUSrc = 0;
 				RegDst = 1;
@@ -57,6 +60,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
 				RegDst = 0;
@@ -72,6 +76,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
 				RegDst = 1;
@@ -87,6 +92,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
 				RegDst = 0;
@@ -102,6 +108,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
 				RegDst = 1;
@@ -117,6 +124,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
 				RegDst = 0;
@@ -132,6 +140,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
 				RegDst = 1;
@@ -147,6 +156,7 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
 				RegDst = 1;
@@ -162,10 +172,43 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				StackSrc = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
 				RegDst = 1;
 				RegWrite = 0;
+			end
+			12'he52: begin // Single push
+				MemToReg = 0;
+				MemWrite = 1;
+				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
+				StackSrc = 1;
+				ALUControl = 3'b110;
+				ALUSrc = 1;
+				RegDst = 1;
+				RegWrite = 0;
+			end
+			12'he49: begin // Single pop
+				MemToReg = 1;
+				MemWrite = 0;
+				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
+				StackSrc = 1;
+				ALUControl = 3'b010;
+				ALUSrc = 1;
+				RegDst = 1;
+				RegWrite = 1;
 			end
 			default: begin
 				case (opcode[11:4]) // Branch functions
@@ -179,6 +222,7 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
 						RegDst = 0;
@@ -194,6 +238,7 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
 						RegDst = 0;
@@ -209,6 +254,7 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
 						RegDst = 0;
@@ -224,6 +270,7 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
 						RegDst = 0;
@@ -239,6 +286,7 @@ module ControlUnit (
 						blt = 1;
 						bge = 0;
 						ble = 0;
+						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
 						RegDst = 0;
@@ -254,6 +302,7 @@ module ControlUnit (
 						blt = 0;
 						bge = 1;
 						ble = 0;
+						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
 						RegDst = 0;
@@ -269,6 +318,7 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 1;
+						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
 						RegDst = 0;
@@ -284,6 +334,7 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						StackSrc = 0;
 						ALUControl = 3'b000;
 						ALUSrc = 0;
 						RegDst = 0;
