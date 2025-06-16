@@ -1,4 +1,5 @@
-.global _start
+
+	.global _start
 
 @ R7 = tamaño actual de la serpiente 
 @ R8 = nivel actual 
@@ -10,16 +11,17 @@
 
 _start:
     MOV R8, #1                 @ Nivel inicial = 1
-    MOV R7, #2                 @ Tamaño inicial de la serpiente (cabeza + cuerpo)
+    MOV R7, #3                 @ Tamaño inicial de la serpiente (cabeza + cuerpo)
     LDR R9, =0x1000            @ Dirección del teclado simulado
     MOV R12, #0                @ Índice del arreglo simulación teclado
     BL init_game_level1        @ Inicializa el tablero y obstáculos del nivel 1
+	BL update_matrix_snake
     BL rand_apple              @ Coloca una manzana inicial aleatoria
-    BL rand_apple              @ Agregar más manzanas
     B main_game_loop           @ Bucle principal del juego
 
 main_game_loop:    
     BL move
+	BL update_matrix_snake
     
     @BL fake_grow_snake
     CMP R8, #1                 @ validacion Nivel 1
@@ -88,17 +90,20 @@ fill_loop1:
     STR R3, [R0, #( 6*10 + 2 )*4]
     STR R3, [R0, #( 6*10 + 6 )*4]
     STR R3, [R0, #( 6*10 + 7 )*4]
+	
+	MOV R3, #5
+	STR R3, [R0, #( 0*10 + 6 )*4]
 
     @ Cabeza 1 y cuerpo 2
-    MOV R3, #1
-    STR R3, [R0, #(0*10 + 1)*4]   
-    MOV R3, #2
-    STR R3, [R0, #(0*10 + 0)*4]   
     LDR R0, =0x3000      @ Dirección de cabeza de serpiente
-    MOV R3, #(0*10 + 1)*4
+    MOV R3, #(0*10 + 2)*4
     STR R3, [R0]  
-    MOV R3, #(0*10 + 0)*4
+    MOV R3, #(0*10 + 1)*4
     STR R3, [R0, #4]  
+	MOV R3, #(0*10 + 0)*4
+	STR R3, [R0, #8]
+	MOV R3, #666
+	STR R3, [R0, #12]
     BX LR
 
 @ NIVEL 2
@@ -201,24 +206,70 @@ fill_loop3:
 fake_grow_snake:
     ADD R7, R7, #1             @ Aumenta el tamaño de la serpiente en 1 segmento
     BX LR
+	
+
+update_matrix_snake:
+    PUSH {R0-R4, LR}
+
+    LDR R0, =0x2000        @ Dirección base de la matriz
+    LDR R1, =0x3000        @ Dirección base de la lista de posiciones de la serpiente
+    ADD R2, R7, #1             @ Contador de segmentos
+    MOV R3, #0             @ Índice (offsets en lista de posiciones)
+
+@ --- Limpiar todas las posiciones anteriores de la serpiente ---
+clear_snake_loop:
+    CMP R2, #0
+    BEQ set_new_snake      @ Ya terminó de limpiar
+
+    LDR R4, [R1, R3]       @ Leer posición i de la serpiente (offset dentro de la matriz)
+	MOV R5, #666
+	CMP R4, R5
+	BEQ set_new_snake
+	
+    ADD R4, R4, R0         @ Dirección absoluta en matriz: 0x2000 + offset
+    MOV R5, #0
+    STR R5, [R4]           @ Limpiar celda
+    ADD R3, R3, #4         @ Siguiente elemento
+    SUB R2, R2, #1
+    B clear_snake_loop
+	
+	
+@ --- Escribir nuevas posiciones de la serpiente ---
+set_new_snake:
+    LDR R0, =0x2000        @ Dirección base de la matriz
+    LDR R1, =0x3000        @ Dirección base de la lista de posiciones de la serpiente
+    MOV R2, R7             @ Contador de segmentos
+    MOV R3, #0             @ Índice (offsets en lista de posiciones)
+    MOV R4, #1             @ El primer valor será 1 (cabeza)
+
+write_snake_loop:
+    CMP R2, #0
+    BEQ end_update_matrix
+
+    LDR R5, [R1, R3]       @ Leer offset de matriz
+    ADD R5, R5, R0         @ Dirección absoluta
+    STR R4, [R5]           @ Escribir 1 (cabeza) o 2 (cuerpo)
+
+    MOV R4, #2             @ Las siguientes serán cuerpo
+    ADD R3, R3, #4         @ Siguiente posición de la serpiente
+    SUB R2, R2, #1
+    B write_snake_loop
+
+end_update_matrix:
+    POP {R0-R4, LR}
+    BX LR
 
 @ --- Movimiento de la serpiente ---
 
 move:
     PUSH {LR}
-    LDR R0, =0x3000     @ Coordenada de cabeza
-    MOV R1, R7          @ R7 contiene el índice final (ej. 1 → 0x3004)
-    LSL R1, R1, #2      @ R1 = R1 * 4 (desplazamiento en bytes)
-    ADD R0, R0, R1      @ R0 = dirección final
-    MOV R2, #3             @ Número de movimientos (0x3008, 0x3004, 0x3000)    
-    BL shift_right_loop
     
     BL sim_keys
 
     BL read_key
     
     MOV R6, #0
-    LDR R0, =0x3004
+    LDR R0, =0x3000
     LDR R1, [R0]
     BL move_aux
 
@@ -238,20 +289,33 @@ move:
     BEQ die
 
     CMP R4, #5              @ verificación si ha manzana
-    BNE no_apple            @ No hay, continua del mismo tamaño
-
-    MOV R5, #0
-    STR R5, [R3]            @ Borra la manzana
-    BL fake_grow_snake      @ Crece la serpiente
-    BL rand_apple           @ Se coloca una nueva manzana
-
-no_apple:                   @ método de validación para saber si hay manzana o no
-
-    @ Si no hay colisión, actualizar posición de la cabeza
+    BEQ apple            @ Sí hay, aumenta
+	
+	BL mover_cuerpo
+	
+	@ Si no hay colisión, actualizar posición de la cabeza
     LDR R0, =0x3000     @ Dirección base
     STR R6, [R0]            @ Guardar nueva posición
-    MOV R5, #1              @ Código para cabeza
-    STR R5, [R3]            @ Escribir cabeza
+
+    POP {LR}
+	BX LR
+	
+mover_cuerpo:
+	LDR R0, =0x3000     @ Coordenada de cabeza
+    MOV R1, R7         @ R7 contiene el índice final (ej. 1 → 0x3004)
+    LSL R1, R1, #2      @ R1 = R1 * 4 (desplazamiento en bytes)
+    ADD R0, R0, R1      @ R0 = dirección final
+    MOV R2, R7           @ Número de movimientos (0x3008, 0x3004, 0x3000)    
+    B shift_right_loop
+
+apple:                   @ método de validación para saber si hay manzana o no
+
+	BL fake_grow_snake      @ Crece la serpiente
+	BL mover_cuerpo
+    @ Actualizar posición de la cabeza
+    LDR R0, =0x3000     @ Dirección base
+    STR R6, [R0]            @ Guardar nueva posición
+    BL rand_apple           @ Se coloca una nueva manzana
 
     POP {LR}
     BX LR
@@ -281,7 +345,66 @@ read_key:
     BX LR
 
 change_direction:
-    STR R4, [R9, #4]               @ Guardar dirección en 0x1004
+    LDR R0, [R9]          @ Nueva tecla presionada (posible nueva dirección)
+    LDR R1, [R9, #4]      @ Dirección actual
+
+    @ Comparar eje vertical
+    LDR R2, =UP_ARROW
+    LDR R2, [R2]
+    CMP R0, R2
+    BEQ check_vertical
+
+    LDR R2, =DOWN_ARROW
+    LDR R2, [R2]
+    CMP R0, R2
+    BEQ check_vertical
+
+    @ Comparar eje horizontal
+    LDR R2, =LEFT_ARROW
+    LDR R2, [R2]
+    CMP R0, R2
+    BEQ check_horizontal
+
+    LDR R2, =RIGHT_ARROW
+    LDR R2, [R2]
+    CMP R0, R2
+    BEQ check_horizontal
+
+    B end_change_dir
+
+@ --- Verificar si nueva dirección vertical es opuesta a la actual
+check_vertical:
+    LDR R2, =UP_ARROW
+    LDR R2, [R2]
+    CMP R1, R2
+    BEQ end_change_dir      @ Ya va en UP, no cambiar a DOWN
+
+    LDR R2, =DOWN_ARROW
+    LDR R2, [R2]
+    CMP R1, R2
+    BEQ end_change_dir      @ Ya va en DOWN, no cambiar a UP
+
+    B apply_direction
+
+@ --- Verificar si nueva dirección horizontal es opuesta a la actual
+check_horizontal:
+    LDR R2, =LEFT_ARROW
+    LDR R2, [R2]
+    CMP R1, R2
+    BEQ end_change_dir      @ Ya va en LEFT, no cambiar a RIGHT
+
+    LDR R2, =RIGHT_ARROW
+    LDR R2, [R2]
+    CMP R1, R2
+    BEQ end_change_dir      @ Ya va en RIGHT, no cambiar a LEFT
+
+    B apply_direction
+
+@ --- Aplicar nueva dirección si es válida
+apply_direction:
+    STR R0, [R9, #4]     @ Guardar nueva dirección en 0x1004
+
+end_change_dir:
     BX LR
 
 move_aux:
@@ -299,12 +422,32 @@ move_aux:
     LDR R2, =LEFT_ARROW      @ Cargar dirección donde esta la constante de flecha izquierda
     LDR R2, [R2]       @ Constante flecha izquierda
     CMP R4, R2                 @ ¿Flecha izquierda?
-    BEQ move_left
+    BEQ move_left_check
     
     LDR R2, =RIGHT_ARROW      @ Cargar dirección donde esta la constante de flecha derecha
     LDR R2, [R2]       @ Constante flecha derecha
     CMP R4, R2                 @ ¿Flecha derecha?
-    BEQ move_right
+    BEQ move_right_check
+
+@ Movimiento con verificación de colisión a la izquierda
+move_left_check:
+    MOV R2, R1
+	PUSH {LR}
+    BL mod10_generic      @ R2 ← R1 % 40 (bytes por fila) → luego div 4
+	POP {LR}
+    CMP R2, #0
+    BEQ die               @ Si está en la primera columna, muere
+    B move_left
+
+@ Movimiento con verificación de colisión a la derecha
+move_right_check:
+    MOV R2, R1
+	PUSH {LR}
+    BL mod10_generic
+	POP {LR}
+    CMP R2, #36           @ 9 * 4 = 36 (última columna en bytes)
+    BEQ die               @ Si está en la última columna, muere
+    B move_right
 
 move_up:
     SUB R6, R1, #40         @UP
@@ -348,6 +491,7 @@ sim_end:
 @ --- Colocar una manzana en posición aleatoria libre ---
 rand_apple:
     PUSH {R1-R7, LR}
+	PUSH {R12}
 gen_loop:
     LDR R1, =seed
     LDR R2, [R1]
@@ -379,7 +523,19 @@ gen_loop:
 
     MOV R5, #5
     STR R5, [R3]          @ Escribe el valor 5 en la matriz cuando este libre 
+	POP {R12}
     POP {R1-R7, LR}
+    BX LR
+
+@ R2 ← R1 % 40 (posición en bytes dentro de la fila)
+mod10_generic:
+    MOV R3, #40
+mod10_generic_loop:
+    CMP R2, R3
+    BLT mod10_generic_end
+    SUB R2, R2, R3
+    B mod10_generic_loop
+mod10_generic_end:
     BX LR
 
 @ Subrutina: R10 % 10 → R10 (resultado)
@@ -427,10 +583,10 @@ RIGHT_ARROW:.word 0xE04D
 DIRECTION:.word 0xE04D
 
 KEYS:                           @ Arreglo de teclas simuladas
-    .word 0xE050                @ Abajo
     .word 0xE04D                @ Derecha
-    .word 0xE048                @ Arriba
+	.word 0xE04D                @ Derecha
     .word 0xE04D                @ Derecha
+	.word 0xE04D                @ Derecha
     .word 0x1234                @ Tecla inválida
 
 seed:   .word 0x5A              @ Semilla para aleatorio
