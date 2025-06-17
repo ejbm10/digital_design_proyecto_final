@@ -12,132 +12,175 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Subtractor.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Subtractor.sv 
 # -- Compiling module Subtractor
 # 
 # Top level modules:
 # 	Subtractor
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv 
 # -- Compiling module Adder
 # 
 # Top level modules:
 # 	Adder
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv 
 # -- Compiling module ALU
 # 
 # Top level modules:
 # 	ALU
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv 
 # -- Compiling module ROM
 # 
 # Top level modules:
 # 	ROM
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv 
 # -- Compiling module RAM
 # 
 # Top level modules:
 # 	RAM
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv 
 # -- Compiling module GPR
 # 
 # Top level modules:
 # 	GPR
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv 
 # -- Compiling module CPU
 # 
 # Top level modules:
 # 	CPU
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv 
 # -- Compiling module ControlUnit
 # 
 # Top level modules:
 # 	ControlUnit
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:03 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv 
 # -- Compiling module RegisterFile
 # 
 # Top level modules:
 # 	RegisterFile
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:03 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ImmExtend.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:24 on Jun 13,2025
+# Start time: 15:39:04 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ImmExtend.sv 
 # -- Compiling module ImmExtend
 # 
 # Top level modules:
 # 	ImmExtend
-# End time: 23:54:24 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:04 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:25 on Jun 13,2025
+# Start time: 15:39:04 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv 
 # -- Compiling module SignExtend
 # 
 # Top level modules:
 # 	SignExtend
-# End time: 23:54:25 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:04 on Jun 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:39:04 on Jun 17,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv 
+# -- Compiling module vga_controller
+# 
+# Top level modules:
+# 	vga_controller
+# End time: 15:39:04 on Jun 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:39:04 on Jun 17,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv 
+# -- Compiling module video_gen
+# 
+# Top level modules:
+# 	video_gen
+# End time: 15:39:04 on Jun 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ByteExtend.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:39:04 on Jun 17,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ByteExtend.sv 
+# -- Compiling module ByteExtend
+# 
+# Top level modules:
+# 	ByteExtend
+# End time: 15:39:04 on Jun 17,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:39:04 on Jun 17,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv 
+# -- Compiling module uartRX
+# 
+# Top level modules:
+# 	uartRX
+# End time: 15:39:04 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:54:25 on Jun 13,2025
+# Start time: 15:39:04 on Jun 17,2025
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches" C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv 
 # -- Compiling module CPU_tb
 # 
 # Top level modules:
 # 	CPU_tb
-# End time: 23:54:25 on Jun 13,2025, Elapsed time: 0:00:00
+# End time: 15:39:04 on Jun 17,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  CPU_tb
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" CPU_tb 
-# Start time: 23:54:25 on Jun 13,2025
+# Start time: 15:39:04 on Jun 17,2025
 # Loading sv_std.std
 # Loading work.CPU_tb
 # Loading work.CPU
+# Loading work.vga_controller
+# Loading work.video_gen
+# Loading work.uartRX
 # Loading work.ControlUnit
 # Loading work.RegisterFile
 # Loading work.GPR
@@ -148,6 +191,26 @@
 # Loading work.Subtractor
 # Loading work.ImmExtend
 # Loading work.SignExtend
+# Loading work.ByteExtend
+# ** Warning: (vsim-3017) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Too few port connections. Expected 12, found 2.
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_tb/dut File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'rx'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'leds'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'hsync'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'vsync'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'r'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'g'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'b'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'blank_b'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'sync_b'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'vgaclk'.
+# ** Warning: (vsim-3017) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(69): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_tb/dut/vgaCont File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(69): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-3839) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(36): Variable '/CPU_tb/dut/y', driven via a port connection, is multiply driven. See C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(69).
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_tb/dut File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
+# ** Warning: (vsim-3839) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(34): Variable '/CPU_tb/dut/x', driven via a port connection, is multiply driven. See C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(69).
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_tb/dut File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
 # 
 # add wave *
 # view structure
@@ -158,19 +221,31 @@
 # ** Note: $stop    : C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(20)
 #    Time: 1010 ps  Iteration: 0  Instance: /CPU_tb
 # Break in Module CPU_tb at C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv line 20
-add wave -position end  sim:/CPU_tb/dut/c3/MemWrite
-add wave -position end  sim:/CPU_tb/dut/c3/A
-add wave -position end  sim:/CPU_tb/dut/c3/WriteData
-add wave -position end  sim:/CPU_tb/dut/c3/ReadData
-add wave -position end  sim:/CPU_tb/dut/c3/MemorySpace
-add wave -position end  sim:/CPU_tb/dut/c3/Stack
-add wave -position end  sim:/CPU_tb/dut/c2/r2/Q
-add wave -position end  sim:/CPU_tb/dut/c2/r3/Q
-add wave -position end  sim:/CPU_tb/dut/c2/r4/Q
+add wave -position end  sim:/CPU_tb/dut/SP
+add wave -position end  sim:/CPU_tb/dut/LR
+add wave -position end  sim:/CPU_tb/dut/PC
+add wave -position 2  sim:/CPU_tb/dut/c4/inst
 restart
+# ** Warning: (vsim-3017) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Too few port connections. Expected 12, found 2.
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_tb/dut File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'rx'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'leds'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'hsync'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'vsync'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'r'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'g'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'b'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'blank_b'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'sync_b'.
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(5): [TFMPC] - Missing connection for port 'vgaclk'.
+# ** Warning: (vsim-3017) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(69): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_tb/dut/vgaCont File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv
+# ** Warning: (vsim-3722) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(69): [TFMPC] - Missing connection for port 'reset'.
+# ** Warning: (vsim-3839) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(36): Variable '/CPU_tb/dut/y', driven via a port connection, is multiply driven. See C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(69).
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_tb/dut File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
+# ** Warning: (vsim-3839) C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(34): Variable '/CPU_tb/dut/x', driven via a port connection, is multiply driven. See C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv(69).
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_tb/dut File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv
 run -all
 # ** Note: $stop    : C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv(20)
 #    Time: 1010 ps  Iteration: 0  Instance: /CPU_tb
 # Break in Module CPU_tb at C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv line 20
-# End time: 23:57:05 on Jun 13,2025, Elapsed time: 0:02:40
-# Errors: 0, Warnings: 0

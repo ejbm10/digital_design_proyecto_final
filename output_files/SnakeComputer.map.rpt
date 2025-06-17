@@ -1,5 +1,5 @@
 Analysis & Elaboration report for SnakeComputer
-Fri Jun 13 23:38:05 2025
+Tue Jun 17 15:38:46 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -9,11 +9,15 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   1. Legal Notice
   2. Analysis & Elaboration Summary
   3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Port Connectivity Checks: "ALU:c5|Subtractor:subtractor"
-  6. Port Connectivity Checks: "ALU:c5"
-  7. Analysis & Elaboration Messages
-  8. Analysis & Elaboration Suppressed Messages
+  4. Parameter Settings for User Entity Instance: vga_controller:vgaCont
+  5. Parameter Settings for User Entity Instance: uartRX:receiver
+  6. Analysis & Elaboration Settings
+  7. Port Connectivity Checks: "ALU:c5|Subtractor:subtractor"
+  8. Port Connectivity Checks: "ALU:c5"
+  9. Port Connectivity Checks: "video_gen:videoInst"
+ 10. Port Connectivity Checks: "vga_controller:vgaCont"
+ 11. Analysis & Elaboration Messages
+ 12. Analysis & Elaboration Suppressed Messages
 
 
 
@@ -39,7 +43,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Fri Jun 13 23:38:05 2025       ;
+; Analysis & Elaboration Status ; Successful - Tue Jun 17 15:38:46 2025       ;
 ; Quartus Prime Version         ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                 ; SnakeComputer                               ;
 ; Top-level Entity Name         ; CPU                                         ;
@@ -70,12 +74,42 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: vga_controller:vgaCont ;
++----------------+------------+---------------------------------------+
+; Parameter Name ; Value      ; Type                                  ;
++----------------+------------+---------------------------------------+
+; HACTIVE        ; 1010000000 ; Unsigned Binary                       ;
+; HFP            ; 0000010000 ; Unsigned Binary                       ;
+; HSYN           ; 0001100000 ; Unsigned Binary                       ;
+; HBP            ; 0000110000 ; Unsigned Binary                       ;
+; HMAX           ; 1100100000 ; Unsigned Binary                       ;
+; VACTIVE        ; 0111100000 ; Unsigned Binary                       ;
+; VFP            ; 0000001011 ; Unsigned Binary                       ;
+; VSYN           ; 0000000010 ; Unsigned Binary                       ;
+; VBP            ; 0000100000 ; Unsigned Binary                       ;
+; VMAX           ; 1000001101 ; Unsigned Binary                       ;
++----------------+------------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uartRX:receiver ;
++----------------+----------+----------------------------------+
+; Parameter Name ; Value    ; Type                             ;
++----------------+----------+----------------------------------+
+; CLK_FREQ       ; 50000000 ; Signed Integer                   ;
+; BAUD_RATE      ; 9600     ; Signed Integer                   ;
++----------------+----------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +---------------------------------------------------------------------------------------------------------------------------+
 ; Analysis & Elaboration Settings                                                                                           ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Device                                                                          ; 5CSXFC6D6F31C6     ;                    ;
 ; Top-level entity name                                                           ; CPU                ; SnakeComputer      ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
@@ -176,14 +210,302 @@ refer to the applicable agreement for further details.
 +------+--------+----------+------------------------+
 
 
++-------------------------------------------------------+
+; Port Connectivity Checks: "video_gen:videoInst"       ;
++---------------------+-------+----------+--------------+
+; Port                ; Type  ; Severity ; Details      ;
++---------------------+-------+----------+--------------+
+; tablero[9][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][8][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][8][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][7][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][7][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][6][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][6][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][5][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][5][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][4][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][4][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][3][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][3][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][2][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][2][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][1][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][1][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[9][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[9][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][8][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][8][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][8][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[8][7][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][7][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][7][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[8][6][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][6][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][6][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[8][5][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][5][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][5][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[8][4][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][4][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][4][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[8][3][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][3][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][3][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[8][2][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][2][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][2][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[8][1][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][1][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[8][1][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[8][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[8][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][8][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][8][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][8][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[7][7][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][7][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[7][7][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][6][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][6][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[7][6][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][5][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][5][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[7][5][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][4][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][4][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[7][4][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][3][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][3][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[7][3][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][2][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][2][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[7][2][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][1][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][1][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[7][1][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[7][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[7][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[6][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][8][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[6][8][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][8][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][7][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[6][7][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][7][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][6][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][6][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][6][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][6][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][5][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][5][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][5][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][5][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][4][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][4][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][4][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][4][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][3][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][3][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][3][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][3][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][2][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[6][2][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][2][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][1][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[6][1][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[6][1][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[6][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[6][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][5..4]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[5][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][8][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[5][8][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][8][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][7][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[5][7][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][7][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][6][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][6][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][6][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][6][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][3][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][3][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][3][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][3][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][2][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[5][2][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][2][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][1][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[5][1][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[5][1][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[5][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[5][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][5..4]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[4][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][8][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[4][8][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][8][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][7][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[4][7][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][7][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][6][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][6][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][6][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][6][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][3][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][3][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][3][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][3][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][2][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[4][2][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][2][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][1][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[4][1][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[4][1][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[4][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[4][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[3][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][8][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[3][8][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][8][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][7][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[3][7][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][7][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][6][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][6][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][6][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][6][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][5][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][5][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][5][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][5][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][4][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][4][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][4][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][4][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][3][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][3][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][3][1]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][3][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][2][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[3][2][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][2][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][1][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[3][1][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[3][1][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[3][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[3][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][8][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][8][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][8][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[2][7][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][7][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[2][7][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][6][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][6][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[2][6][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][5][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][5][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[2][5][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][4][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][4][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[2][4][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][3][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][3][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[2][3][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][2][1..0] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][2][3]    ; Input ; Info     ; Stuck at GND ;
+; tablero[2][2][2]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][1][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][1][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[2][1][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[2][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[2][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][8][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][8][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][8][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[1][7][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][7][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][7][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[1][6][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][6][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][6][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[1][5][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][5][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][5][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[1][4][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][4][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][4][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[1][3][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][3][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][3][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[1][2][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][2][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][2][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[1][1][3..2] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][1][1]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[1][1][0]    ; Input ; Info     ; Stuck at GND ;
+; tablero[1][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[1][0][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][9][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][9][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][8][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][8][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][7][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][7][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][6][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][6][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][5][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][5][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][4][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][4][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][3][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][3][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][2][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][2][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][1][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][1][0]    ; Input ; Info     ; Stuck at VCC ;
+; tablero[0][0][3..1] ; Input ; Info     ; Stuck at GND ;
+; tablero[0][0][0]    ; Input ; Info     ; Stuck at VCC ;
++---------------------+-------+----------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "vga_controller:vgaCont"                                                                                                                       ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                                                                                      ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; vgaclk ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; reset  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++--------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +---------------------------------+
 ; Analysis & Elaboration Messages ;
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Fri Jun 13 23:37:56 2025
+    Info: Processing started: Tue Jun 17 15:38:36 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SnakeComputer -c SnakeComputer --analysis_and_elaboration
+Warning (125092): Tcl Script File clkIP.qip not found
+    Info (125063): set_global_assignment -name QIP_FILE clkIP.qip
+Warning (125092): Tcl Script File clkIP.sip not found
+    Info (125063): set_global_assignment -name SIP_FILE clkIP.sip
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file alu/subtractor.sv
@@ -220,30 +542,57 @@ Info (12021): Found 1 design units, including 1 entities, in source file hardwar
     Info (12023): Found entity 1: SignExtend File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file testbenches/signextend_tb.sv
     Info (12023): Found entity 1: SignExtend_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/SignExtend_tb.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file vga/vga_controller.sv
+    Info (12023): Found entity 1: vga_controller File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file vga/video_gen.sv
+    Info (12023): Found entity 1: video_gen File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hardware/byteextend.sv
+    Info (12023): Found entity 1: ByteExtend File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ByteExtend.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hardware/uartrx.sv
+    Info (12023): Found entity 1: uartRX File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 1
 Warning (10236): Verilog HDL Implicit Net warning at ALU.sv(25): created implicit net for "sub_bout" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 25
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 38
-Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 51
+Warning (10030): Net "vgaclk" at CPU.sv(12) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 12
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vgaCont" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 77
+Warning (10230): Verilog HDL assignment warning at vga_controller.sv(32): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv Line: 32
+Warning (10230): Verilog HDL assignment warning at vga_controller.sv(34): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv Line: 34
+Info (12128): Elaborating entity "video_gen" for hierarchy "video_gen:videoInst" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 88
+Warning (10230): Verilog HDL assignment warning at video_gen.sv(25): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 25
+Warning (10230): Verilog HDL assignment warning at video_gen.sv(26): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 26
+Warning (10230): Verilog HDL assignment warning at video_gen.sv(27): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 27
+Warning (10230): Verilog HDL assignment warning at video_gen.sv(28): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 28
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
+Info (12128): Elaborating entity "uartRX" for hierarchy "uartRX:receiver" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 101
+Warning (10230): Verilog HDL assignment warning at uartRX.sv(54): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 54
+Warning (10230): Verilog HDL assignment warning at uartRX.sv(61): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 61
+Warning (10230): Verilog HDL assignment warning at uartRX.sv(63): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 63
+Warning (10230): Verilog HDL assignment warning at uartRX.sv(74): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 74
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 122
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 135
 Info (12128): Elaborating entity "GPR" for hierarchy "RegisterFile:c2|GPR:r0" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv Line: 42
-Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 60
-Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 67
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 145
+Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 152
 Warning (10030): Net "instruction_set.data_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
 Warning (10030): Net "instruction_set.waddr_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
 Warning (10030): Net "instruction_set.we_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 78
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 163
 Warning (10858): Verilog HDL warning at ALU.sv(9): object sub_cout used but never assigned File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
 Warning (10030): Net "sub_cout" at ALU.sv(9) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
 Info (12128): Elaborating entity "Adder" for hierarchy "ALU:c5|Adder:adder" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 19
 Info (12128): Elaborating entity "Subtractor" for hierarchy "ALU:c5|Subtractor:subtractor" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 27
-Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 83
-Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 88
+Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 168
+Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 173
 Warning (10230): Verilog HDL assignment warning at SignExtend.sv(10): truncated value with size 32 to match size of target (24) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 10
+Info (12128): Elaborating entity "ByteExtend" for hierarchy "ByteExtend:extender" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 178
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (144001): Generated suppressed messages file C:/Users/eboli/Documents/Github/digital_design_proyecto_final/output_files/SnakeComputer.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4787 megabytes
-    Info: Processing ended: Fri Jun 13 23:38:05 2025
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:19
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 22 warnings
+    Info: Peak virtual memory: 4801 megabytes
+    Info: Processing ended: Tue Jun 17 15:38:46 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:22
 
 
 +--------------------------------------------+

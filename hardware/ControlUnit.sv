@@ -9,6 +9,8 @@ module ControlUnit (
 	output logic blt,
 	output logic bge,
 	output logic ble,
+	output logic link,
+	output logic ret,
 	output logic StackSrc,
 	output logic [2:0] ALUControl,
 	output logic ALUSrc,
@@ -28,6 +30,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b000;
 				ALUSrc = 0;
@@ -44,6 +48,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b000;
 				ALUSrc = 0;
@@ -60,6 +66,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
@@ -76,6 +84,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
@@ -92,6 +102,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
@@ -108,6 +120,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
@@ -124,6 +138,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
@@ -140,6 +156,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
@@ -156,6 +174,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
@@ -172,6 +192,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 0;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
@@ -188,6 +210,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 1;
 				ALUControl = 3'b110;
 				ALUSrc = 1;
@@ -204,6 +228,8 @@ module ControlUnit (
 				blt = 0;
 				bge = 0;
 				ble = 0;
+				link = 0;
+				ret = 0;
 				StackSrc = 1;
 				ALUControl = 3'b010;
 				ALUSrc = 1;
@@ -222,6 +248,8 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						link = 0;
+						ret = 0;
 						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
@@ -238,6 +266,8 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						link = 0;
+						ret = 0;
 						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
@@ -254,6 +284,8 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						link = 0;
+						ret = 0;
 						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
@@ -270,6 +302,8 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						link = 0;
+						ret = 0;
 						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
@@ -286,6 +320,8 @@ module ControlUnit (
 						blt = 1;
 						bge = 0;
 						ble = 0;
+						link = 0;
+						ret = 0;
 						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
@@ -302,6 +338,8 @@ module ControlUnit (
 						blt = 0;
 						bge = 1;
 						ble = 0;
+						link = 0;
+						ret = 0;
 						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
@@ -318,6 +356,44 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 1;
+						link = 0;
+						ret = 0;
+						StackSrc = 0;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					8'heb: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 1;
+						beq = 0;
+						bne = 0;
+						bgt = 0;
+						blt = 0;
+						bge = 0;
+						ble = 0;
+						link = 1;
+						ret = 0;
+						StackSrc = 0;
+						ALUControl = opcode[3] ? 3'b110 : 3'b010;
+						ALUSrc = 1;
+						RegDst = 0;
+						RegWrite = 0;
+					end
+					8'he1: begin
+						MemToReg = 0;
+						MemWrite = 0;
+						branch = 1;
+						beq = 0;
+						bne = 0;
+						bgt = 0;
+						blt = 0;
+						bge = 0;
+						ble = 0;
+						link = 0;
+						ret = 1;
 						StackSrc = 0;
 						ALUControl = opcode[3] ? 3'b110 : 3'b010;
 						ALUSrc = 1;
@@ -334,6 +410,8 @@ module ControlUnit (
 						blt = 0;
 						bge = 0;
 						ble = 0;
+						link = 0;
+						ret = 0;
 						StackSrc = 0;
 						ALUControl = 3'b000;
 						ALUSrc = 0;

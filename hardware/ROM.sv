@@ -8,14 +8,14 @@ module ROM (
 	logic [31:0] instruction_set [0:411];
 	
 	initial begin
-		instruction_set[0] = 32'hE3A08001;
-		instruction_set[1] = 32'hE3A07003;
-		instruction_set[2] = 32'hE59F9614;
-		instruction_set[3] = 32'hE3A0C000;
-		instruction_set[4] = 32'hEB00001D;
-		instruction_set[5] = 32'hEB000094;
-		instruction_set[6] = 32'hEB00014A;
-		instruction_set[7] = 32'hEAFFFFFF;
+		instruction_set[0] = 32'hE3A08001; // MOV R8, #1
+		instruction_set[1] = 32'hE3A07003; // MOV R7, #3
+		instruction_set[2] = 32'hE3A09A01; // LDR R9, =0X1000
+		instruction_set[3] = 32'hE3A0C000; // MOV R12, #0
+		instruction_set[4] = 32'hEB00001D; // BL init_game_level1
+		instruction_set[5] = 32'hEB000094; // BL update_matrix_snake
+		instruction_set[6] = 32'hEB00014A; // BL rand_apple
+		instruction_set[7] = 32'hEAFFFFFF; // B main_game_loop
 		instruction_set[8] = 32'hEB0000B2;
 		instruction_set[9] = 32'hEB000090;
 		instruction_set[10] = 32'hE3580001;

@@ -13,7 +13,7 @@ module CPU (
 	
 	logic MemToReg, MemWrite, ALUSrc, RegDst, RegWrite, PCSrc, StackSrc; 
 	
-	logic branch, beq, bne, bgt, blt, bge, ble;
+	logic branch, beq, bne, bgt, blt, bge, ble, link, ret;
 	
 	logic n_flag, z_flag;
 	
@@ -25,7 +25,7 @@ module CPU (
 	
 	logic [2:0] ALUControl;
 	
-	logic [31:0] inst, PC, SP;
+	logic [31:0] inst, SP, LR, PC;
 	
 	logic [31:0] uart_data_ext;	
 	
@@ -58,13 +58,13 @@ module CPU (
     reg prev_rx_valid;
 
  
-	 clkIP clkdiv(
-			.refclk(clk),   //  refclk.clk
-		.rst(rst),      //   reset.reset
-		.outclk_0(vgaclk), // outclk0.clk
-		.locked()
+	 //clkIP clkdiv(
+		//	.refclk(clk),   //  refclk.clk
+		//.rst(rst),      //   reset.reset
+		//.outclk_0(vgaclk), // outclk0.clk
+		//.locked()
 	 
-	 );
+	 //);
 	 
 	   vga_controller vgaCont(
         .vgaclk(vgaclk), 
@@ -112,6 +112,8 @@ module CPU (
 		.blt(blt),
 		.bge(bge),
 		.ble(ble),
+		.link(link),
+		.ret(ret),
 		.StackSrc(StackSrc),
 		.ALUControl(ALUControl),
 		.ALUSrc(ALUSrc),
@@ -204,6 +206,13 @@ module CPU (
 	
 	always_ff @(negedge clk or posedge rst) begin
 		if (rst)
+			LR <= 0;
+		else if (link)
+			LR <= PC;
+	end
+	
+	always_ff @(negedge clk or posedge rst) begin
+		if (rst)
 			SP <= 0;
 		else if (StackSrc)
 			SP <= ALUResult;
@@ -216,6 +225,8 @@ module CPU (
 			PC <= PC + 8 + offset_out;
 		else if (PCSrc & (ALUControl == 3'b110))		
 			PC <= PC + 8 - offset_out;
+		else if (PCSrc & ret)
+			PC <= LR + 4;
 		else
 			PC <= PC + 4;
 	end
