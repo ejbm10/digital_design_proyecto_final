@@ -37,16 +37,16 @@
 
 
 set_global_assignment -name FAMILY "Cyclone V"
-set_global_assignment -name DEVICE 5CGXFC7C7F23C8
+set_global_assignment -name DEVICE 5CSXFC6D6F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY CPU
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:33:25  MAY 30, 2025"
-set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "22.1std.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (SystemVerilog)"
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (SystemVerilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
@@ -59,6 +59,66 @@ set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME RAM_tb -section_id RAM_tb
 set_global_assignment -name EDA_TEST_BENCH_NAME RegisterFile_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id RegisterFile_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME RegisterFile_tb -section_id RegisterFile_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME ControlUnit_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ControlUnit_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ControlUnit_tb -section_id ControlUnit_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME ImmExtend_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ImmExtend_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ImmExtend_tb -section_id ImmExtend_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME CPU_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id CPU_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME CPU_tb -section_id CPU_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME SignExtend_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id SignExtend_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME SignExtend_tb -section_id SignExtend_tb
+set_global_assignment -name BOARD "Cyclone V SoC Development Kit"
+set_location_assignment PIN_AK29 -to r[0]
+set_location_assignment PIN_AK28 -to r[1]
+set_location_assignment PIN_AK27 -to r[2]
+set_location_assignment PIN_AJ27 -to r[3]
+set_location_assignment PIN_AH27 -to r[4]
+set_location_assignment PIN_AF26 -to r[5]
+set_location_assignment PIN_AG26 -to r[6]
+set_location_assignment PIN_AJ26 -to r[7]
+set_location_assignment PIN_AK26 -to g[0]
+set_location_assignment PIN_AJ25 -to g[1]
+set_location_assignment PIN_AH25 -to g[2]
+set_location_assignment PIN_AK24 -to g[3]
+set_location_assignment PIN_AJ24 -to g[4]
+set_location_assignment PIN_AH24 -to g[5]
+set_location_assignment PIN_AK23 -to g[6]
+set_location_assignment PIN_AH23 -to g[7]
+set_location_assignment PIN_AJ21 -to b[0]
+set_location_assignment PIN_AJ20 -to b[1]
+set_location_assignment PIN_AH20 -to b[2]
+set_location_assignment PIN_AJ19 -to b[3]
+set_location_assignment PIN_AH19 -to b[4]
+set_location_assignment PIN_AJ17 -to b[5]
+set_location_assignment PIN_AJ16 -to b[6]
+set_location_assignment PIN_AK16 -to b[7]
+set_location_assignment PIN_AK22 -to blank_b
+set_location_assignment PIN_AK21 -to vgaclk
+set_location_assignment PIN_AK18 -to vsync
+set_location_assignment PIN_AJ22 -to sync_b
+set_location_assignment PIN_W15 -to rx
+set_location_assignment PIN_AA24 -to leds[0]
+set_location_assignment PIN_AB23 -to leds[1]
+set_location_assignment PIN_AC23 -to leds[2]
+set_location_assignment PIN_AD24 -to leds[3]
+set_location_assignment PIN_AF14 -to clk
+set_location_assignment PIN_AK19 -to hsync
+set_location_assignment PIN_AB30 -to rst
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rx
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
+set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/RAM_tb.sv -section_id RAM_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/RegisterFile_tb.sv -section_id RegisterFile_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/ControlUnit_tb.sv -section_id ControlUnit_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/ImmExtend_tb.sv -section_id ImmExtend_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/CPU_tb.sv -section_id CPU_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/SignExtend_tb.sv -section_id SignExtend_tb
+set_global_assignment -name SOURCE_FILE ROM.mem
+set_global_assignment -name SOURCE_FILE clkIP.cmp
 set_global_assignment -name SYSTEMVERILOG_FILE ALU/Subtractor.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ALU/Adder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE hardware/ALU.sv
@@ -71,30 +131,18 @@ set_global_assignment -name SYSTEMVERILOG_FILE hardware/ControlUnit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE hardware/RegisterFile.sv
 set_global_assignment -name SYSTEMVERILOG_FILE testbenches/RegisterFile_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE testbenches/ControlUnit_tb.sv
-set_global_assignment -name EDA_TEST_BENCH_NAME ControlUnit_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ControlUnit_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ControlUnit_tb -section_id ControlUnit_tb
 set_global_assignment -name SYSTEMVERILOG_FILE testbenches/CPU_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE hardware/ImmExtend.sv
 set_global_assignment -name SYSTEMVERILOG_FILE testbenches/ImmExtend_tb.sv
-set_global_assignment -name EDA_TEST_BENCH_NAME ImmExtend_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ImmExtend_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ImmExtend_tb -section_id ImmExtend_tb
-set_global_assignment -name EDA_TEST_BENCH_NAME CPU_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id CPU_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME CPU_tb -section_id CPU_tb
 set_global_assignment -name SYSTEMVERILOG_FILE hardware/SignExtend.sv
 set_global_assignment -name SYSTEMVERILOG_FILE testbenches/SignExtend_tb.sv
-set_global_assignment -name EDA_TEST_BENCH_NAME SignExtend_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id SignExtend_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME SignExtend_tb -section_id SignExtend_tb
+set_global_assignment -name QIP_FILE clkIP.qip
+set_global_assignment -name SIP_FILE clkIP.sip
+set_global_assignment -name SYSTEMVERILOG_FILE VGA/vga_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE VGA/video_gen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE hardware/ByteExtend.sv
+set_global_assignment -name SYSTEMVERILOG_FILE hardware/uartRX.sv
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/RAM_tb.sv -section_id RAM_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/RegisterFile_tb.sv -section_id RegisterFile_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/ControlUnit_tb.sv -section_id ControlUnit_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/ImmExtend_tb.sv -section_id ImmExtend_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/CPU_tb.sv -section_id CPU_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE testbenches/SignExtend_tb.sv -section_id SignExtend_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
