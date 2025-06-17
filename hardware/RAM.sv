@@ -4,31 +4,39 @@ module RAM (
 	input logic MemWrite,
 	input logic [31:0] A,
 	input logic [31:0] WriteData,
+	input logic [31:0] uart_data,
+
+
+
 	output logic [31:0] ReadData
 );
 
-	logic [31:0] MemorySpace [0:99];
+	logic [31:0] MemorySpace [0:255];
 	logic [31:0] Stack [0:9];
 	
 	always_comb begin
-		if (A >= 32'h1000 && A < 32'h1190)
+
+		if (A >= 32'h1000 && A < 32'h1400)
 			ReadData = MemorySpace[(A - 32'h1000) >> 2];
 		else if (A <= 32'hFFFFFFFC)
 			ReadData = Stack[(32'hFFFFFFFC - A) >> 2];
-		else
+		else if (A == 32'h13F4) begin
+			ReadData = uart_data;
+		end else begin
 			ReadData = 32'hFFFFFFFF;
+		end
 	end
 	
 	always_ff @(negedge clk or posedge rst) begin
 		if (rst) begin
-			for (int i = 0; i < 100; i++) begin
+			for (int i = 0; i < 256; i++) begin
 				MemorySpace[i] <= 32'h0;
 			end
 			for (int i = 0; i < 10; i++) begin
 				Stack[i] <= 32'h0;
 			end
 		end
-		else if (MemWrite && A >= 32'h1000 && A < 32'h1190)
+		else if (MemWrite && A >= 32'h1000 && A < 32'h1400)
 			MemorySpace[(A - 32'h1000) >> 2] <= WriteData;
 		else if (MemWrite && A <= 32'hFFFFFFFC)
 			Stack[(32'hFFFFFFFC - A) >> 2] <= WriteData;
