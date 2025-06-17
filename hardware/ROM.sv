@@ -13,6 +13,7 @@ module ROM (
 		instruction_set[2] = 32'hE52D2004;	// PUSH
 		instruction_set[3] = 32'hE49D3004;	// POP a R3
 		instruction_set[4] = 32'hE49D4004;	// POP a R4
+	
 	end
 	
 	always_ff @(posedge clk or posedge rst) begin

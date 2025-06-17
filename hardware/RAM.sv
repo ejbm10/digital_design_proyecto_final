@@ -4,6 +4,10 @@ module RAM (
 	input logic MemWrite,
 	input logic [31:0] A,
 	input logic [31:0] WriteData,
+	input logic [31:0] uart_data
+
+
+
 	output logic [31:0] ReadData
 );
 
@@ -11,12 +15,16 @@ module RAM (
 	logic [31:0] Stack [0:9];
 	
 	always_comb begin
+
 		if (A >= 32'h1000 && A < 32'h1190)
 			ReadData = MemorySpace[(A - 32'h1000) >> 2];
 		else if (A <= 32'hFFFFFFFC)
 			ReadData = Stack[(32'hFFFFFFFC - A) >> 2];
-		else
+		else if (A == 32'h1200) begin
+			ReadData = uart_data;
+		end else begin
 			ReadData = 32'hFFFFFFFF;
+		end
 	end
 	
 	always_ff @(negedge clk or posedge rst) begin

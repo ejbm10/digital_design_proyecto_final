@@ -1,6 +1,8 @@
 module CPU (
 	input logic clk,
-	input logic rst
+	input logic rst,
+	input logic rx,
+	output logic [3:0] leds
 );
 	
 	logic MemToReg, MemWrite, ALUSrc, RegDst, RegWrite, PCSrc, StackSrc; 
@@ -18,6 +20,28 @@ module CPU (
 	logic [2:0] ALUControl;
 	
 	logic [31:0] inst, PC, SP;
+	
+	logic [31:0] uart_data_ext;	
+	logic uart_ready;
+	
+	
+	 wire [7:0] rx_data;
+    wire rx_valid;
+    wire uart_busy;
+
+    reg prev_rx_valid;
+
+
+	
+	
+	uartRX receiver (
+			  .clk(clk),
+			  .rst(rst),
+			  .rx(rx),
+			  .data(rx_data),
+			  .valid(rx_valid)
+		 );
+
 	
 	ControlUnit c1 (
 		.opcode(inst[31:20]),
@@ -50,14 +74,15 @@ module CPU (
 		.R3(R3)
 	);
 	
-	RAM c3 (
-		.clk(clk),
-		.rst(rst),
-		.MemWrite(MemWrite),
-		.A(a_mux),
-		.WriteData(R3),
-		.ReadData(ReadData)
-	);
+		RAM c3 (
+			.clk(clk),
+			.rst(rst),
+			.MemWrite(MemWrite),
+			.A(a_mux),
+			.WriteData(R3),
+			.ReadData(ReadData),
+			.uart_data(uart_data_ext)
+		);
 	
 	ROM c4 (
 		.clk(clk),
@@ -87,9 +112,15 @@ module CPU (
 		.offset_out(offset_out)
 	);
 	
+	ByteExtend extender (
+    .byte_in(rx_data),
+    .byte_out(uart_data_ext)
+);
+	
 	assign imm_mux = RegDst ? imm_out : R2;
 	assign alu_mux = ALUSrc ? ALUResult : imm_mux;
 	assign mem_mux = MemToReg ? ReadData : alu_mux;
+
 	
 	assign stack_mux = StackSrc ? SP : R1;
 	assign a_mux = (StackSrc && (ALUControl == 3'b010)) ? SP : ALUResult;
@@ -130,5 +161,28 @@ module CPU (
 		else
 			PC <= PC + 4;
 	end
+	
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            leds <= 4'b0;
+            prev_rx_valid <= 1'b0;
+           
+        end else begin
+
+            // byte recibido
+            prev_rx_valid <= rx_valid;
+				if (rx_valid && !prev_rx_valid) begin
+					 case (rx_data)
+							 8'h55: leds <= 4'b0001;
+                    8'h44: leds <= 4'b0010;
+                    8'h4C: leds <= 4'b0100;
+                    8'h52: leds <= 4'b1000;
+                    default: leds <= 4'b0000;					
+						  endcase
+
+				end
+
+        end
+    end
 	
 endmodule
