@@ -46,7 +46,6 @@ module video_gen(
                     4'd2: begin r = 8'h90; g = 8'hEE; b = 8'h90; end // verde claro
                     4'd4: begin r = 8'h8B; g = 8'h45; b = 8'h13; end // café
                     4'd5: begin r = 8'hFF; g = 8'h00; b = 8'h00; end // rojo
-						  4'd8: begin r = 8'hFF; g = 8'hFF; b = 8'h00; end // rojo
                     default: begin r = 8'hC0; g = 8'hC0; b = 8'hC0; end // gris claro
                 endcase
             end

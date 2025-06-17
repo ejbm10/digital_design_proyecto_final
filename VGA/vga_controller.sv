@@ -1,23 +1,19 @@
 module vga_controller #(
-    parameter HACTIVE = 640,
-    parameter HFP = 16,
-    parameter HSYN = 96,
-    parameter HBP = 48,
-    parameter HMAX = HACTIVE + HFP + HSYN + HBP,    // 800
-    parameter VACTIVE = 480,
-    parameter VFP = 11,
-    parameter VSYN = 2,
-    parameter VBP = 32,
-    parameter VMAX = VACTIVE + VFP + VSYN + VBP     // 525
+    parameter HACTIVE = 10'd640,
+    HFP = 10'd16,
+    HSYN = 10'd96,
+    HBP = 10'd48,
+    HMAX = HACTIVE + HFP + HSYN + HBP,
+    VACTIVE = 10'd480,
+    VFP = 10'd11,
+    VSYN = 10'd2,
+    VBP = 10'd32,
+    VMAX = VACTIVE + VFP + VSYN + VBP
 )(
-    input  logic vgaclk,   
+    input  logic vgaclk,
     input  logic reset,
-    output logic hsync,
-    output logic vsync,
-    output logic sync_b,
-    output logic blank_b,
-    output logic [9:0] x,
-    output logic [9:0] y
+    output logic hsync, vsync, sync_b, blank_b,
+    output logic [9:0] x, y
 );
 
     logic [9:0] x_reg = 0;
@@ -42,6 +38,7 @@ module vga_controller #(
 
     assign x = x_reg;
     assign y = y_reg;
+
     assign hsync   = ~(x_reg >= HACTIVE + HFP && x_reg < HACTIVE + HFP + HSYN);
     assign vsync   = ~(y_reg >= VACTIVE + VFP && y_reg < VACTIVE + VFP + VSYN);
     assign sync_b  = hsync & vsync;
