@@ -3,16 +3,16 @@
 
 @ R7 = tamaño actual de la serpiente 
 @ R8 = nivel actual 
-@ R9 = Dirección base del teclado simulado: 0x1000
-@ Dirección hacia donde se mueve: 0x1004
-@ Dirección base de la matriz: 0x2000
-@ Dirección base de la posición de la serpiente: 0x3000
+@ R9 = Dirección base del teclado simulado: 0x13F4
+@ Dirección hacia donde se mueve: 0x13F8
+@ Dirección base de la matriz: 0x1000
+@ Dirección base de la posición de la serpiente: 1200
 @ Para la posición de la serpiente se utiliza: (r*10 + c)*4 donde r es la fila y c la columna
 
 _start:
     MOV R8, #1                 @ Nivel inicial = 1
     MOV R7, #3                 @ Tamaño inicial de la serpiente (cabeza + cuerpo)
-    LDR R9, =0x1000            @ Dirección del teclado simulado
+    LDR R9, =0x13F4            @ Dirección del teclado simulado
     MOV R12, #0                @ Índice del arreglo simulación teclado
     BL init_game_level1        @ Inicializa el tablero y obstáculos del nivel 1
 	BL update_matrix_snake
@@ -63,15 +63,15 @@ check_level3:
 init_game_level1:
     PUSH {R12}
     MOV R12, #100
-    LDR R0, =0x2000
+    LDR R0, =0x1000
     MOV R2, #0
 fill_loop1:
     STR R2, [R0], #4
-    SUBS R12, R12, #1
+    SUB R12, R12, #1
     BNE fill_loop1
     POP {R12}
 @ ===== Nivel1 ===== Obstáculos
-    LDR R0, =0x2000
+    LDR R0, =0x1000
     MOV R3, #4
 
     STR R3, [R0, #( 3*10 + 1 )*4]
@@ -95,7 +95,7 @@ fill_loop1:
 	STR R3, [R0, #( 0*10 + 6 )*4]
 
     @ Cabeza 1 y cuerpo 2
-    LDR R0, =0x3000      @ Dirección de cabeza de serpiente
+    LDR R0, =0x1200      @ Dirección de cabeza de serpiente
     MOV R3, #(0*10 + 2)*4
     STR R3, [R0]  
     MOV R3, #(0*10 + 1)*4
@@ -110,15 +110,15 @@ fill_loop1:
 init_game_level2:
     PUSH {R12}
     MOV R12, #100
-    LDR R0, =0x2000
+    LDR R0, =0x1000
     MOV R2, #0
 fill_loop2:
     STR R2, [R0], #4
-    SUBS R12, R12, #1
+    SUB R12, R12, #1
     BNE fill_loop2
     POP {R12}
 @ ===== Nivel2 =====
-    LDR R0, =0x2000
+    LDR R0, =0x1000
     MOV R3, #4
 
     STR R3, [R0, #( 0*10 + 0 )*4]
@@ -153,15 +153,15 @@ fill_loop2:
 init_game_level3:
     PUSH {R12}
     MOV R12, #100
-    LDR R1, =0x2000
+    LDR R1, =0x1000
     MOV R2, #0
 fill_loop3:
     STR R2, [R1], #4
-    SUBS R12, R12, #1
+    SUB R12, R12, #1
     BNE fill_loop3
     POP {R12}
 @ ===== Nivel3 =====
-    LDR R0, =0x2000
+    LDR R0, =0x1000
     MOV R3, #4
 
     STR R3, [R0, #( 0*10 + 0 )*4]
@@ -209,10 +209,15 @@ fake_grow_snake:
 	
 
 update_matrix_snake:
-    PUSH {R0-R4, LR}
+    PUSH {R0}
+	PUSH {R1}
+	PUSH {R2}
+	PUSH {R3}
+	PUSH {R4}
+	PUSH {LR}
 
-    LDR R0, =0x2000        @ Dirección base de la matriz
-    LDR R1, =0x3000        @ Dirección base de la lista de posiciones de la serpiente
+    LDR R0, =0x1000        @ Dirección base de la matriz
+    LDR R1, =0x1200        @ Dirección base de la lista de posiciones de la serpiente
     ADD R2, R7, #1             @ Contador de segmentos
     MOV R3, #0             @ Índice (offsets en lista de posiciones)
 
@@ -226,7 +231,7 @@ clear_snake_loop:
 	CMP R4, R5
 	BEQ set_new_snake
 	
-    ADD R4, R4, R0         @ Dirección absoluta en matriz: 0x2000 + offset
+    ADD R4, R4, R0         @ Dirección absoluta en matriz: 0x1000 + offset
     MOV R5, #0
     STR R5, [R4]           @ Limpiar celda
     ADD R3, R3, #4         @ Siguiente elemento
@@ -236,8 +241,8 @@ clear_snake_loop:
 	
 @ --- Escribir nuevas posiciones de la serpiente ---
 set_new_snake:
-    LDR R0, =0x2000        @ Dirección base de la matriz
-    LDR R1, =0x3000        @ Dirección base de la lista de posiciones de la serpiente
+    LDR R0, =0x1000        @ Dirección base de la matriz
+    LDR R1, =0x1200        @ Dirección base de la lista de posiciones de la serpiente
     MOV R2, R7             @ Contador de segmentos
     MOV R3, #0             @ Índice (offsets en lista de posiciones)
     MOV R4, #1             @ El primer valor será 1 (cabeza)
@@ -256,7 +261,13 @@ write_snake_loop:
     B write_snake_loop
 
 end_update_matrix:
-    POP {R0-R4, LR}
+	POP {LR}
+	POP {R4}
+	POP {R3}
+	POP {R2}
+	POP {R1}
+	POP {R0}
+
     BX LR
 
 @ --- Movimiento de la serpiente ---
@@ -269,7 +280,7 @@ move:
     BL read_key
     
     MOV R6, #0
-    LDR R0, =0x3000
+    LDR R0, =0x1200
     LDR R1, [R0]
     BL move_aux
 
@@ -280,7 +291,7 @@ move:
     BGT die
 
     @ 2. Verificar si el valor en la nueva celda es un obstáculo (4) o cuerpo (2)
-    LDR R2, =0x2000
+    LDR R2, =0x1000
     ADD R3, R2, R6          @ R3 ← dirección de la nueva celda
     LDR R4, [R3]            @ R4 ← contenido de la celda
     CMP R4, #4
@@ -294,18 +305,18 @@ move:
 	BL mover_cuerpo
 	
 	@ Si no hay colisión, actualizar posición de la cabeza
-    LDR R0, =0x3000     @ Dirección base
+    LDR R0, =0x1200     @ Dirección base CABEZA
     STR R6, [R0]            @ Guardar nueva posición
 
     POP {LR}
 	BX LR
 	
 mover_cuerpo:
-	LDR R0, =0x3000     @ Coordenada de cabeza
-    MOV R1, R7         @ R7 contiene el índice final (ej. 1 → 0x3004)
+	LDR R0, =0x1200     @ Coordenada de cabeza
+    MOV R1, R7         @ R7 contiene el índice final
     LSL R1, R1, #2      @ R1 = R1 * 4 (desplazamiento en bytes)
     ADD R0, R0, R1      @ R0 = dirección final
-    MOV R2, R7           @ Número de movimientos (0x3008, 0x3004, 0x3000)    
+    MOV R2, R7           @ Número de movimientos     
     B shift_right_loop
 
 apple:                   @ método de validación para saber si hay manzana o no
@@ -313,7 +324,7 @@ apple:                   @ método de validación para saber si hay manzana o no
 	BL fake_grow_snake      @ Crece la serpiente
 	BL mover_cuerpo
     @ Actualizar posición de la cabeza
-    LDR R0, =0x3000     @ Dirección base
+    LDR R0, =0x1200     @ Dirección base
     STR R6, [R0]            @ Guardar nueva posición
     BL rand_apple           @ Se coloca una nueva manzana
 
@@ -321,7 +332,7 @@ apple:                   @ método de validación para saber si hay manzana o no
     BX LR
 
 read_key:
-    LDR R4, [R9]               @ Leer valor de la tecla desde 0x1000
+    LDR R4, [R9]               @ Leer valor de la tecla desde 0x13F4
     LDR R2, =UP_ARROW      @ Cargar dirección donde esta la constante de flecha arriba
     LDR R2, [R2]       @ Constante flecha arriba
     CMP R4, R2                 @ ¿Flecha arriba?
@@ -402,7 +413,7 @@ check_horizontal:
 
 @ --- Aplicar nueva dirección si es válida
 apply_direction:
-    STR R0, [R9, #4]     @ Guardar nueva dirección en 0x1004
+    STR R0, [R9, #4]     @ Guardar nueva dirección en 0x13F8
 
 end_change_dir:
     BX LR
@@ -471,7 +482,7 @@ shift_right_loop:
     ADD R4, R0, #4         @ Dirección destino
     STR R3, [R4]           @ Guardar valor en siguiente dirección
 
-    SUBS R2, R2, #1        @ Decrementar contador
+    SUB R2, R2, #1        @ Decrementar contador
     BNE shift_right_loop
     BX LR
 
@@ -481,7 +492,7 @@ sim_keys:
     CMP R12, R0             @ Revisa si ya se realizaron todas las iteraciones
     BEQ sim_end
     LDR R0, [R6, R12, LSL #2]   @ Leer tecla simulada
-    STR R0, [R9]               @ Simular que "teclado" puso la tecla en 0x1000
+    STR R0, [R9]               @ Simular que "teclado" puso la tecla en 0x13F4
     ADD R12, R12, #1
     BX LR
     
@@ -490,7 +501,14 @@ sim_end:
 
 @ --- Colocar una manzana en posición aleatoria libre ---
 rand_apple:
-    PUSH {R1-R7, LR}
+	PUSH {R1}
+	PUSH {R2}
+	PUSH {R3}
+	PUSH {R4}
+	PUSH {R5}
+	PUSH {R6}
+	PUSH {R7}
+	PUSH {LR}
 	PUSH {R12}
 gen_loop:
     LDR R1, =seed
@@ -510,7 +528,7 @@ gen_loop:
     MOV R11, R2
     BL mod10_R11          @ R11 = R11 % 10 (columna)
 
-    LDR R3, =0x2000
+    LDR R3, =0x1000
     MOV R5, #10
     MUL R4, R10, R5       @ R4 = fila * 10
     ADD R4, R4, R11       @ R4 = fila * 10 + columna
@@ -524,7 +542,14 @@ gen_loop:
     MOV R5, #5
     STR R5, [R3]          @ Escribe el valor 5 en la matriz cuando este libre 
 	POP {R12}
-    POP {R1-R7, LR}
+	POP {LR}
+	POP {R7}
+	POP {R6}
+	POP {R5}
+	POP {R4}
+	POP {R3}
+	POP {R2}
+	POP {R1}
     BX LR
 
 @ R2 ← R1 % 40 (posición en bytes dentro de la fila)
@@ -565,7 +590,7 @@ win_game:
 
 die:
     LDR R1, [R0]         @ R1 ← offset actual de la cabeza (0 ≤ offset ≤ 0x18C)
-    LDR R2, =0x2000      @ Base de la matriz
+    LDR R2, =0x1000      @ Base de la matriz
     ADD R3, R2, R1       @ R3 ← dirección absoluta de la cabeza
     MOV R4, #8           @ Valor que representa muerte
     STR R4, [R3]         @ Guardar el 8 en la posición de la cabeza
