@@ -10,7 +10,7 @@ module ImmExtend (
         imm8 = imm_in[7:0];
         rotate_imm = imm_in[11:8];
         rot_amount = rotate_imm << 1;
-
+		
         imm_out = (32'(imm8) >> rot_amount) | (32'(imm8) << (32 - rot_amount));
     end
 endmodule

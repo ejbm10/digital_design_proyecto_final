@@ -21,7 +21,7 @@ module CPU (
 	
 	logic [31:0] WriteReg, R1, R2, R3, A, ReadData, ALUResult; 
 	
-	logic [31:0] mem_mux, alu_mux, imm_mux, imm_out, offset_out, stack_mux, a_mux;
+	logic [31:0] mem_mux, alu_mux, imm_mux, imm_out, offset_out, stack_mux, a_mux, str_imm_mux;
 	
 	logic [2:0] ALUControl;
 	
@@ -139,7 +139,7 @@ module CPU (
 			.rst(rst),
 			.MemWrite(MemWrite),
 			.A(a_mux),
-			.WriteData(R3),
+			.WriteData((inst[15:12] == 4'b1110) ? LR : R3),
 			.ReadData(ReadData),
 			.uart_data(uart_data_ext)
 		);
@@ -177,7 +177,8 @@ module CPU (
     .byte_out(uart_data_ext)
 );
 	
-	assign imm_mux = RegDst ? imm_out : R2;
+	assign str_imm_mux = (inst[31:20] == 12'he58) ? inst[11:0] : imm_out;
+	assign imm_mux = RegDst ? str_imm_mux : R2;
 	assign alu_mux = ALUSrc ? ALUResult : imm_mux;
 	assign mem_mux = MemToReg ? ReadData : alu_mux;
 
@@ -209,6 +210,8 @@ module CPU (
 			LR <= 0;
 		else if (link)
 			LR <= PC;
+		else if (RegWrite & inst[15:12] == 4'b1110)
+			LR <= ReadData;
 	end
 	
 	always_ff @(negedge clk or posedge rst) begin
@@ -221,12 +224,12 @@ module CPU (
 	always_ff @(negedge clk or posedge rst) begin
 		if (rst)
 			PC <= 0;
+		else if (PCSrc & ret)
+			PC <= LR + 4;
 		else if (PCSrc & (ALUControl == 3'b010))
 			PC <= PC + 8 + offset_out;
 		else if (PCSrc & (ALUControl == 3'b110))		
 			PC <= PC + 8 - offset_out;
-		else if (PCSrc & ret)
-			PC <= LR + 4;
 		else
 			PC <= PC + 4;
 	end

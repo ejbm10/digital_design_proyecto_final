@@ -164,7 +164,7 @@ module ControlUnit (
 				RegDst = 1;
 				RegWrite = 0;
 			end
-			12'he59: begin // Load
+			12'he59: begin // Load imm
 				MemToReg = 1;
 				MemWrite = 0;
 				branch = 0;
@@ -182,7 +182,25 @@ module ControlUnit (
 				RegDst = 1;
 				RegWrite = 1;
 			end
-			12'he58: begin // Store
+			12'he79: begin // Load reg
+				MemToReg = 1;
+				MemWrite = 0;
+				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
+				link = 0;
+				ret = 0;
+				StackSrc = 0;
+				ALUControl = 3'b010;
+				ALUSrc = 1;
+				RegDst = 0;
+				RegWrite = 1;
+			end
+			12'he58: begin // Store imm
 				MemToReg = 0;
 				MemWrite = 1;
 				branch = 0;
