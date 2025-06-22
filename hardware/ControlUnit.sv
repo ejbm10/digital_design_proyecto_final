@@ -1,5 +1,6 @@
 module ControlUnit (
 	input logic [11:0] opcode,
+	input logic [7:0] isLSL,
 	output logic MemToReg,
 	output logic MemWrite,
 	output logic branch,
@@ -20,7 +21,7 @@ module ControlUnit (
 	
 	always_comb begin
 		case (opcode)
-			12'he1a: begin // MOV (Dos registros)
+			12'he1a: begin // MOV (Dos registros) o LSL
 				MemToReg = 0;
 				MemWrite = 0;
 				branch = 0;
@@ -33,9 +34,9 @@ module ControlUnit (
 				link = 0;
 				ret = 0;
 				StackSrc = 0;
-				ALUControl = 3'b000;
-				ALUSrc = 0;
-				RegDst = 0;
+				ALUControl = (isLSL == 8'h0) ? 3'b000 : 3'b100;
+				ALUSrc = (isLSL == 8'h0) ? 0 : 1;
+				RegDst = (isLSL[3:0] == 4'h1) ? 0 : 1;
 				RegWrite = 1;
 			end
 			12'he3a: begin // MOV (Inmediato)
@@ -162,24 +163,6 @@ module ControlUnit (
 				ALUControl = 3'b000;
 				ALUSrc = 1;
 				RegDst = 1;
-				RegWrite = 1;
-			end
-			12'he1a: begin // LSL
-				MemToReg = 0;
-				MemWrite = 0;
-				branch = 0;
-				beq = 0;
-				bne = 0;
-				bgt = 0;
-				blt = 0;
-				bge = 0;
-				ble = 0;
-				link = 0;
-				ret = 0;
-				StackSrc = 0;
-				ALUControl = 3'b100;
-				ALUSrc = 1;
-				RegDst = 0;
 				RegWrite = 1;
 			end
 			12'he15: begin // CMP (con registros)

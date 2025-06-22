@@ -23,7 +23,7 @@ module CPU (
 	logic [31:0] WriteReg, R1, R2, R3, A, ReadData, ALUResult; 
 	
 	logic [31:0] mem_mux, alu_mux, imm_mux, imm_out, offset_out, stack_mux, a_mux, str_imm_mux;
-	logic [31:0] mul_lsl_mux1, mul_lsl_mux2, mul_mux3, lsl_imm_mux;
+	logic [31:0] mul_lsl_mux1, mul_lsl_mux2, mul_mux3, lsl_imm;
 	
 	logic [2:0] ALUControl;
 	
@@ -110,6 +110,7 @@ module CPU (
 	
 	ControlUnit c1 (
 		.opcode(inst[31:20]),
+		.isLSL(inst[11:4]),
 		.MemToReg(MemToReg),
 		.MemWrite(MemWrite),
 		.branch(branch),
@@ -188,8 +189,8 @@ module CPU (
 	assign mul_lsl_mux2 = (ALUControl == 3'b101 | ALUControl == 3'b100) ? inst[11:8] : inst[3:0];
 	assign mul_mux3 = (ALUControl == 3'b101) ? inst[19:16] : inst[15:12];
 	
-	assign lsl_imm_mux = (inst[31:20] == 12'he1a & inst[7:4] != 4'b0001) ? inst[11:7] : imm_out;
-	assign str_imm_mux = (inst[31:20] == 12'he58) ? inst[11:0] : lsl_imm_mux;
+	assign lsl_imm = (ALUControl == 3'b100 & RegDst) ? inst[11:7] : imm_out;
+	assign str_imm_mux = (inst[31:20] == 12'he58) ? inst[11:0] : lsl_imm;
 	assign imm_mux = RegDst ? str_imm_mux : R2;
 	assign alu_mux = ALUSrc ? ALUResult : imm_mux;
 	assign mem_mux = MemToReg ? ReadData : alu_mux;
