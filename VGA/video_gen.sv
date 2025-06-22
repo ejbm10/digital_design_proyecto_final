@@ -2,7 +2,7 @@ module video_gen(
     input  logic [9:0] x,
     input  logic [9:0] y,
     input  logic blank_b,
-    input  logic [3:0] tablero [9:0][9:0],
+    input  logic [3:0] matriz [9:0][9:0],
     output logic [7:0] r, g, b
 );
 
@@ -28,7 +28,7 @@ module video_gen(
     assign y_in_cell = (y - OFFSET_Y) % CELL_SIZE;
 
     // Asignar valor de la celda de forma combinacional pura
-    assign valor = (dentro_grid && blank_b) ? tablero[fila][col] : 4'd0;
+    assign valor = (dentro_grid && blank_b) ? matriz[fila][col] : 4'd0;
 
     always_comb begin
         // Por defecto, pantalla negra

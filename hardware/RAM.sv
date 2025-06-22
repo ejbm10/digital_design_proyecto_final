@@ -5,13 +5,10 @@ module RAM (
 	input logic [31:0] A,
 	input logic [31:0] WriteData,
 	input logic [31:0] uart_data,
-
-
-
+	output logic [31:0] MemorySpace [0:2047],
 	output logic [31:0] ReadData
 );
-
-	logic [31:0] MemorySpace [0:2047];
+	
 	logic [31:0] Stack [0:9];
 	
 	always_comb begin

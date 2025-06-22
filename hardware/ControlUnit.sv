@@ -36,7 +36,7 @@ module ControlUnit (
 				StackSrc = 0;
 				ALUControl = (isLSL == 8'h0) ? 3'b000 : 3'b100;
 				ALUSrc = (isLSL == 8'h0) ? 0 : 1;
-				RegDst = (isLSL[3:0] == 4'h1) ? 0 : 1;
+				RegDst = (isLSL == 8'h0) ? 0 : ((isLSL[3:0] == 4'h1) ? 0 : 1);
 				RegWrite = 1;
 			end
 			12'he3a: begin // MOV (Inmediato)

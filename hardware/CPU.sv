@@ -35,20 +35,11 @@ module CPU (
 	
 	logic [9:0] x = 0;
 	
-    logic [9:0] y = 0;
+	 logic [9:0] y = 0;
 	 
-	 logic [3:0] tablero [9:0][9:0] = '{
-    '{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-    '{1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
-    '{1, 2, 4, 4, 4, 4, 4, 4, 2, 1},
-    '{1, 2, 4, 5, 5, 5, 5, 4, 2, 1},
-    '{1, 2, 4, 5, 0, 0, 5, 4, 2, 1},
-    '{1, 2, 4, 5, 0, 0, 5, 4, 2, 1},
-    '{1, 2, 4, 5, 5, 5, 5, 4, 2, 1},
-    '{1, 2, 4, 4, 4, 4, 4, 4, 2, 1},
-    '{1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
-    '{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-	};
+	 logic [31:0] MemorySpace [0:2047];
+	 
+	 logic [3:0] matriz [9:0][9:0];
 
 	
 	
@@ -72,32 +63,6 @@ module CPU (
 		//.locked()
 	 
 	 //);
-	 
-	   vga_controller vgaCont(
-        .vgaclk(vgaclk), 
-        .hsync(hsync), 
-        .vsync(vsync), 
-        .sync_b(sync_b), 
-        .blank_b(blank_b), 
-        .x(x), 
-        .y(y)
-    );
-	 
-	 		 // --- Solo la cuadrícula ---
-	video_gen videoInst(
-		 .x(x),
-		 .y(y),
-		 .blank_b(blank_b),
-		 .tablero(tablero),
-		 .r(r),
-		 .g(g),
-		 .b(b)
-	);
-
-
-
-	 
-	
 	
 	uartRX receiver (
 			  .clk(clk),
@@ -142,15 +107,25 @@ module CPU (
 		.R3(R3)
 	);
 	
-		RAM c3 (
-			.clk(cpu_clk),
-			.rst(rst),
-			.MemWrite(MemWrite),
-			.A(a_mux),
-			.WriteData((inst[15:12] == 4'b1110) ? LR : R3),
-			.ReadData(ReadData),
-			.uart_data(uart_data_ext)
-		);
+	RAM c3 (
+		.clk(cpu_clk),
+		.rst(rst),
+		.MemWrite(MemWrite),
+		.A(a_mux),
+		.WriteData((inst[15:12] == 4'b1110) ? LR : R3),
+		.ReadData(ReadData),
+		.uart_data(uart_data_ext),
+		.MemorySpace(MemorySpace)
+		
+	);
+		
+	MatrizAdapter matAdapter (
+    .clk(cpu_clk),
+    .rst(rst),
+    .MemorySpace(MemorySpace),  // ACCESO DIRECTO A RAM
+    .matriz(matriz)
+	);
+
 	
 	ROM c4 (
 		.clk(cpu_clk),
@@ -168,6 +143,27 @@ module CPU (
 		.Z(z_temp),
 		.C(),
 		.V()
+	);
+	
+	vga_controller vgaCont(
+        .vgaclk(vgaclk), 
+        .hsync(hsync), 
+        .vsync(vsync), 
+        .sync_b(sync_b), 
+        .blank_b(blank_b), 
+        .x(x), 
+        .y(y)
+    );
+	 
+	 		 // --- Solo la cuadrícula ---
+	video_gen videoInst(
+		 .x(x),
+		 .y(y),
+		 .blank_b(blank_b),
+		 .matriz(matriz),
+		 .r(r),
+		 .g(g),
+		 .b(b)
 	);
 	
 	ImmExtend c6 (

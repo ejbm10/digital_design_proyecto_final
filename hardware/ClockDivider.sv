@@ -3,7 +3,7 @@ module ClockDivider (
   input logic rst,
   output logic clk_out
 );
-  parameter DIV = 25_000_000; // Para dividir 50 MHz a 2 Hz (ajustar según necesidad)
+  parameter DIV = 2; // Para dividir 50 MHz a 2 Hz (ajustar según necesidad)
   logic [$clog2(DIV)-1:0] counter;
 
   always_ff @(posedge clk_in or posedge rst) begin
