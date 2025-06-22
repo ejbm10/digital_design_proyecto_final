@@ -22,6 +22,7 @@ vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proye
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ByteExtend.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/ShiftLeft.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ClockDivider.sv}
 
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv}
 

@@ -10,6 +10,7 @@ module CPU (
 	output logic sync_b,
 	 output logic vgaclk
 );
+	logic cpu_clk;
 	
 	logic MemToReg, MemWrite, ALUSrc, RegDst, RegWrite, PCSrc, StackSrc; 
 	
@@ -57,7 +58,12 @@ module CPU (
     wire uart_busy;
 
     reg prev_rx_valid;
-
+	
+	ClockDivider sleeper(
+		.clk_in(clk),
+		.rst(rst),
+		.clk_out(cpu_clk)
+	);
  
 	 //clkIP clkdiv(
 		//	.refclk(clk),   //  refclk.clk
@@ -123,7 +129,7 @@ module CPU (
 	);
 	
 	RegisterFile c2 (
-		.clk(clk),
+		.clk(cpu_clk),
 		.rst(rst),
 		.A1(mul_lsl_mux1),
 		.A2(mul_lsl_mux2),
@@ -136,7 +142,7 @@ module CPU (
 	);
 	
 		RAM c3 (
-			.clk(clk),
+			.clk(cpu_clk),
 			.rst(rst),
 			.MemWrite(MemWrite),
 			.A(a_mux),
@@ -146,7 +152,7 @@ module CPU (
 		);
 	
 	ROM c4 (
-		.clk(clk),
+		.clk(cpu_clk),
 		.rst(rst),
 		.PC(PC),
 		.inst(inst)
@@ -200,7 +206,7 @@ module CPU (
 						(bge & (~n_flag | z_flag)) |
 						(ble & (n_flag | z_flag));
 	
-	always_ff @(posedge clk or posedge rst) begin
+	always_ff @(posedge cpu_clk or posedge rst) begin
 		if (rst) begin
 			z_flag <= 0;
 			n_flag <= 0;
@@ -211,7 +217,7 @@ module CPU (
 		end
 	end
 	
-	always_ff @(negedge clk or posedge rst) begin
+	always_ff @(negedge cpu_clk or posedge rst) begin
 		if (rst)
 			LR <= 0;
 		else if (link)
@@ -220,14 +226,14 @@ module CPU (
 			LR <= ReadData;
 	end
 	
-	always_ff @(negedge clk or posedge rst) begin
+	always_ff @(negedge cpu_clk or posedge rst) begin
 		if (rst)
 			SP <= 0;
 		else if (StackSrc)
 			SP <= ALUResult;
 	end
 	
-	always_ff @(negedge clk or posedge rst) begin
+	always_ff @(negedge cpu_clk or posedge rst) begin
 		if (rst)
 			PC <= 0;
 		else if (PCSrc & ret)

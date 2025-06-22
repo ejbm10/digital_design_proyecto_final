@@ -1,5 +1,5 @@
 Analysis & Elaboration report for SnakeComputer
-Sun Jun 22 06:37:08 2025
+Sun Jun 22 06:55:56 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -9,16 +9,17 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
   1. Legal Notice
   2. Analysis & Elaboration Summary
   3. Parallel Compilation
-  4. Parameter Settings for User Entity Instance: vga_controller:vgaCont
-  5. Parameter Settings for User Entity Instance: uartRX:receiver
-  6. Analysis & Elaboration Settings
-  7. Port Connectivity Checks: "ALU:c5|Subtractor:subtractor"
-  8. Port Connectivity Checks: "ALU:c5"
-  9. Port Connectivity Checks: "RegisterFile:c2"
- 10. Port Connectivity Checks: "video_gen:videoInst"
- 11. Port Connectivity Checks: "vga_controller:vgaCont"
- 12. Analysis & Elaboration Messages
- 13. Analysis & Elaboration Suppressed Messages
+  4. Parameter Settings for User Entity Instance: ClockDivider:sleeper
+  5. Parameter Settings for User Entity Instance: vga_controller:vgaCont
+  6. Parameter Settings for User Entity Instance: uartRX:receiver
+  7. Analysis & Elaboration Settings
+  8. Port Connectivity Checks: "ALU:c5|Subtractor:subtractor"
+  9. Port Connectivity Checks: "ALU:c5"
+ 10. Port Connectivity Checks: "RegisterFile:c2"
+ 11. Port Connectivity Checks: "video_gen:videoInst"
+ 12. Port Connectivity Checks: "vga_controller:vgaCont"
+ 13. Analysis & Elaboration Messages
+ 14. Analysis & Elaboration Suppressed Messages
 
 
 
@@ -45,7 +46,7 @@ on the Quartus Prime software download page.
 +---------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                  ;
 +-------------------------------+-------------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Sun Jun 22 06:37:08 2025           ;
+; Analysis & Elaboration Status ; Successful - Sun Jun 22 06:55:56 2025           ;
 ; Quartus Prime Version         ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                 ; SnakeComputer                                   ;
 ; Top-level Entity Name         ; CPU                                             ;
@@ -74,6 +75,16 @@ on the Quartus Prime software download page.
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 +----------------------------+-------------+
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ClockDivider:sleeper ;
++----------------+----------+---------------------------------------+
+; Parameter Name ; Value    ; Type                                  ;
++----------------+----------+---------------------------------------+
+; DIV            ; 25000000 ; Signed Integer                        ;
++----------------+----------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +---------------------------------------------------------------------+
@@ -513,7 +524,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Sun Jun 22 06:36:53 2025
+    Info: Processing started: Sun Jun 22 06:55:39 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SnakeComputer -c SnakeComputer --analysis_and_elaboration
 Warning (125092): Tcl Script File clkIP.qip not found
     Info (125063): set_global_assignment -name QIP_FILE clkIP.qip
@@ -567,52 +578,56 @@ Info (12021): Found 1 design units, including 1 entities, in source file hardwar
     Info (12023): Found entity 1: uartRX File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu/shiftleft.sv
     Info (12023): Found entity 1: ShiftLeft File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/ShiftLeft.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file hardware/clockdivider.sv
+    Info (12023): Found entity 1: ClockDivider File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ClockDivider.sv Line: 1
 Warning (10236): Verilog HDL Implicit Net warning at ALU.sv(25): created implicit net for "sub_bout" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 25
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
 Warning (10030): Net "vgaclk" at CPU.sv(12) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 12
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
-Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vgaCont" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 78
+Info (12128): Elaborating entity "ClockDivider" for hierarchy "ClockDivider:sleeper" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 66
+Warning (10230): Verilog HDL assignment warning at ClockDivider.sv(17): truncated value with size 32 to match size of target (25) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ClockDivider.sv Line: 17
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vgaCont" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 84
 Warning (10230): Verilog HDL assignment warning at vga_controller.sv(32): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv Line: 32
 Warning (10230): Verilog HDL assignment warning at vga_controller.sv(34): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv Line: 34
-Info (12128): Elaborating entity "video_gen" for hierarchy "video_gen:videoInst" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 89
+Info (12128): Elaborating entity "video_gen" for hierarchy "video_gen:videoInst" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 95
 Warning (10230): Verilog HDL assignment warning at video_gen.sv(25): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 25
 Warning (10230): Verilog HDL assignment warning at video_gen.sv(26): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 26
 Warning (10230): Verilog HDL assignment warning at video_gen.sv(27): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 27
 Warning (10230): Verilog HDL assignment warning at video_gen.sv(28): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 28
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
-Info (12128): Elaborating entity "uartRX" for hierarchy "uartRX:receiver" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 102
+Info (12128): Elaborating entity "uartRX" for hierarchy "uartRX:receiver" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 108
 Warning (10230): Verilog HDL assignment warning at uartRX.sv(54): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 54
 Warning (10230): Verilog HDL assignment warning at uartRX.sv(61): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 61
 Warning (10230): Verilog HDL assignment warning at uartRX.sv(63): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 63
 Warning (10230): Verilog HDL assignment warning at uartRX.sv(74): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 74
-Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 123
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 129
 Warning (10272): Verilog HDL Case Statement warning at ControlUnit.sv(167): case item expression covers a value already covered by a previous case item File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv Line: 167
-Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 136
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 142
 Info (12128): Elaborating entity "GPR" for hierarchy "RegisterFile:c2|GPR:r0" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv Line: 42
-Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 146
-Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 153
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 152
+Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 159
 Warning (10030): Net "instruction_set.data_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
 Warning (10030): Net "instruction_set.waddr_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
 Warning (10030): Net "instruction_set.we_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 164
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 170
 Warning (10858): Verilog HDL warning at ALU.sv(9): object sub_cout used but never assigned File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
 Warning (10030): Net "sub_cout" at ALU.sv(9) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
 Info (12128): Elaborating entity "Adder" for hierarchy "ALU:c5|Adder:adder" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 19
 Info (12128): Elaborating entity "Subtractor" for hierarchy "ALU:c5|Subtractor:subtractor" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 27
 Info (12128): Elaborating entity "Multiplier" for hierarchy "ALU:c5|Multiplier:multiplier" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 33
 Info (12128): Elaborating entity "ShiftLeft" for hierarchy "ALU:c5|ShiftLeft:shift" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 39
-Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 169
-Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 174
+Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 175
+Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 180
 Warning (10230): Verilog HDL assignment warning at SignExtend.sv(10): truncated value with size 32 to match size of target (24) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 10
-Info (12128): Elaborating entity "ByteExtend" for hierarchy "ByteExtend:extender" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 179
+Info (12128): Elaborating entity "ByteExtend" for hierarchy "ByteExtend:extender" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 185
 Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (144001): Generated suppressed messages file C:/Users/eboli/Documents/Github/digital_design_proyecto_final/output_files/SnakeComputer.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 23 warnings
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 24 warnings
     Info: Peak virtual memory: 5012 megabytes
-    Info: Processing ended: Sun Jun 22 06:37:08 2025
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:29
+    Info: Processing ended: Sun Jun 22 06:55:56 2025
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:30
 
 
 +--------------------------------------------+
