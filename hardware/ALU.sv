@@ -5,7 +5,7 @@ module ALU (
     output logic N, Z, C, V
 );
 
-logic [31:0] addResult, subResult, andResult, orResult;
+logic [31:0] addResult, subResult, mulResult, andResult, orResult, shiftResult;
 logic sum_cout, sub_cout;
 
 assign andResult = A & B;
@@ -26,12 +26,26 @@ Subtractor subtractor (
 	 .N(N)
 );
 
+Multiplier multiplier (
+	.A(A),
+	.B(B),
+	.result(mulResult)
+);
+
+ShiftLeft shift (
+	.A(A),
+	.B(B),
+	.result(shiftResult)
+);
+
 always_comb begin
     case (ALUControl)
         3'b000: ALUResult = andResult;              // AND
         3'b001: ALUResult = orResult;               // OR
         3'b010: ALUResult = addResult;   				 // ADD
         3'b110: ALUResult = subResult;   				 // SUB
+		  3'b101: ALUResult = mulResult;					 // MUL
+		  3'b100: ALUResult = shiftResult;
         default: ALUResult = 0;
     endcase
 end

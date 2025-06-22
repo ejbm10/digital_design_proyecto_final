@@ -1,14 +1,17 @@
-module Multiplier #(parameter N = 32)(
-    input logic [N-1:0] A, B,
-    output logic [2*N-1:0] result
+module Multiplier (
+    input logic [31:0] A, B,
+    output logic [31:0] result
 );
 
+	logic [63:0] acc;
+	
 always_comb begin
-    result = 0;
-    for (int i = 0; i < N; i++) begin
+    acc = 64'h0;
+    for (int i = 0; i < 32; i++) begin
         if (B[i])
-            result = result + (A << i);
+            acc = acc + (A << i);
     end
+	 result = acc[31:0]; 
 end
 
 endmodule

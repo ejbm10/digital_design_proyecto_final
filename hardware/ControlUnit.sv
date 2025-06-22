@@ -128,6 +128,60 @@ module ControlUnit (
 				RegDst = 1;
 				RegWrite = 1;
 			end
+			12'he00: begin // MUL (con registros)
+				MemToReg = 0;
+				MemWrite = 0;
+				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
+				link = 0;
+				ret = 0;
+				StackSrc = 0;
+				ALUControl = 3'b101;
+				ALUSrc = 1;
+				RegDst = 0;
+				RegWrite = 1;
+			end
+			12'he20: begin // AND (con inmediato)
+				MemToReg = 0;
+				MemWrite = 0;
+				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
+				link = 0;
+				ret = 0;
+				StackSrc = 0;
+				ALUControl = 3'b000;
+				ALUSrc = 1;
+				RegDst = 1;
+				RegWrite = 1;
+			end
+			12'he1a: begin // LSL
+				MemToReg = 0;
+				MemWrite = 0;
+				branch = 0;
+				beq = 0;
+				bne = 0;
+				bgt = 0;
+				blt = 0;
+				bge = 0;
+				ble = 0;
+				link = 0;
+				ret = 0;
+				StackSrc = 0;
+				ALUControl = 3'b100;
+				ALUSrc = 1;
+				RegDst = 0;
+				RegWrite = 1;
+			end
 			12'he15: begin // CMP (con registros)
 				MemToReg = 0;
 				MemWrite = 0;

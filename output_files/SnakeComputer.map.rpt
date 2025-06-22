@@ -1,6 +1,6 @@
 Analysis & Elaboration report for SnakeComputer
-Wed Jun 18 15:04:52 2025
-Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+Sun Jun 22 06:37:08 2025
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
 ---------------------
@@ -14,49 +14,50 @@ Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
   6. Analysis & Elaboration Settings
   7. Port Connectivity Checks: "ALU:c5|Subtractor:subtractor"
   8. Port Connectivity Checks: "ALU:c5"
-  9. Port Connectivity Checks: "video_gen:videoInst"
- 10. Port Connectivity Checks: "vga_controller:vgaCont"
- 11. Analysis & Elaboration Messages
- 12. Analysis & Elaboration Suppressed Messages
+  9. Port Connectivity Checks: "RegisterFile:c2"
+ 10. Port Connectivity Checks: "video_gen:videoInst"
+ 11. Port Connectivity Checks: "vga_controller:vgaCont"
+ 12. Analysis & Elaboration Messages
+ 13. Analysis & Elaboration Suppressed Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2022  Intel Corporation. All rights reserved.
-Your use of Intel Corporation's design tools, logic functions 
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Intel Program License 
-Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
 
 
 
-+--------------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                                 ;
-+-------------------------------+------------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed Jun 18 15:04:52 2025          ;
-; Quartus Prime Version         ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
-; Revision Name                 ; SnakeComputer                                  ;
-; Top-level Entity Name         ; CPU                                            ;
-; Family                        ; Cyclone V                                      ;
-; Logic utilization (in ALMs)   ; N/A until Partition Merge                      ;
-; Total registers               ; N/A until Partition Merge                      ;
-; Total pins                    ; N/A until Partition Merge                      ;
-; Total virtual pins            ; N/A until Partition Merge                      ;
-; Total block memory bits       ; N/A until Partition Merge                      ;
-; Total PLLs                    ; N/A until Partition Merge                      ;
-; Total DLLs                    ; N/A until Partition Merge                      ;
-+-------------------------------+------------------------------------------------+
++---------------------------------------------------------------------------------+
+; Analysis & Elaboration Summary                                                  ;
++-------------------------------+-------------------------------------------------+
+; Analysis & Elaboration Status ; Successful - Sun Jun 22 06:37:08 2025           ;
+; Quartus Prime Version         ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Revision Name                 ; SnakeComputer                                   ;
+; Top-level Entity Name         ; CPU                                             ;
+; Family                        ; Cyclone V                                       ;
+; Logic utilization (in ALMs)   ; N/A until Partition Merge                       ;
+; Total registers               ; N/A until Partition Merge                       ;
+; Total pins                    ; N/A until Partition Merge                       ;
+; Total virtual pins            ; N/A until Partition Merge                       ;
+; Total block memory bits       ; N/A until Partition Merge                       ;
+; Total PLLs                    ; N/A until Partition Merge                       ;
+; Total DLLs                    ; N/A until Partition Merge                       ;
++-------------------------------+-------------------------------------------------+
 
 
 +------------------------------------------+
@@ -64,8 +65,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 20          ;
-; Maximum allowed            ; 12          ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -209,6 +210,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; C    ; Output ; Info     ; Explicitly unconnected ;
 ; V    ; Output ; Info     ; Explicitly unconnected ;
 +------+--------+----------+------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "RegisterFile:c2"                                                                                                                                                                  ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                                                            ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; A1   ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; A2   ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; A3   ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------+
@@ -500,105 +512,112 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
-    Info: Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
-    Info: Processing started: Wed Jun 18 15:04:45 2025
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Processing started: Sun Jun 22 06:36:53 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SnakeComputer -c SnakeComputer --analysis_and_elaboration
 Warning (125092): Tcl Script File clkIP.qip not found
     Info (125063): set_global_assignment -name QIP_FILE clkIP.qip
 Warning (125092): Tcl Script File clkIP.sip not found
     Info (125063): set_global_assignment -name SIP_FILE clkIP.sip
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file alu/multiplier.sv
+    Info (12023): Found entity 1: Multiplier File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Multiplier.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu/subtractor.sv
-    Info (12023): Found entity 1: Subtractor File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/ALU/Subtractor.sv Line: 1
+    Info (12023): Found entity 1: Subtractor File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Subtractor.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu/adder.sv
-    Info (12023): Found entity 1: Adder File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/ALU/Adder.sv Line: 1
+    Info (12023): Found entity 1: Adder File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/alu.sv
-    Info (12023): Found entity 1: ALU File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ALU.sv Line: 1
+    Info (12023): Found entity 1: ALU File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/rom.sv
-    Info (12023): Found entity 1: ROM File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ROM.sv Line: 1
+    Info (12023): Found entity 1: ROM File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/ram.sv
-    Info (12023): Found entity 1: RAM File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/RAM.sv Line: 1
+    Info (12023): Found entity 1: RAM File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/gpr.sv
-    Info (12023): Found entity 1: GPR File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/GPR.sv Line: 1
+    Info (12023): Found entity 1: GPR File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/cpu.sv
-    Info (12023): Found entity 1: CPU File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 1
+    Info (12023): Found entity 1: CPU File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file testbenches/ram_tb.sv
-    Info (12023): Found entity 1: RAM_tb File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/testbenches/RAM_tb.sv Line: 1
+    Info (12023): Found entity 1: RAM_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RAM_tb.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/controlunit.sv
-    Info (12023): Found entity 1: ControlUnit File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ControlUnit.sv Line: 1
+    Info (12023): Found entity 1: ControlUnit File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/registerfile.sv
-    Info (12023): Found entity 1: RegisterFile File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/RegisterFile.sv Line: 1
+    Info (12023): Found entity 1: RegisterFile File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file testbenches/registerfile_tb.sv
-    Info (12023): Found entity 1: RegisterFile_tb File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/testbenches/RegisterFile_tb.sv Line: 1
+    Info (12023): Found entity 1: RegisterFile_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/RegisterFile_tb.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file testbenches/controlunit_tb.sv
-    Info (12023): Found entity 1: ControlUnit_tb File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/testbenches/ControlUnit_tb.sv Line: 1
+    Info (12023): Found entity 1: ControlUnit_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/ControlUnit_tb.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file testbenches/cpu_tb.sv
-    Info (12023): Found entity 1: CPU_tb File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/testbenches/CPU_tb.sv Line: 1
+    Info (12023): Found entity 1: CPU_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/immextend.sv
-    Info (12023): Found entity 1: ImmExtend File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ImmExtend.sv Line: 1
+    Info (12023): Found entity 1: ImmExtend File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ImmExtend.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file testbenches/immextend_tb.sv
-    Info (12023): Found entity 1: ImmExtend_tb File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/testbenches/ImmExtend_tb.sv Line: 1
+    Info (12023): Found entity 1: ImmExtend_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/ImmExtend_tb.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/signextend.sv
-    Info (12023): Found entity 1: SignExtend File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/SignExtend.sv Line: 1
+    Info (12023): Found entity 1: SignExtend File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file testbenches/signextend_tb.sv
-    Info (12023): Found entity 1: SignExtend_tb File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/testbenches/SignExtend_tb.sv Line: 1
+    Info (12023): Found entity 1: SignExtend_tb File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/SignExtend_tb.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file vga/vga_controller.sv
-    Info (12023): Found entity 1: vga_controller File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/VGA/vga_controller.sv Line: 1
+    Info (12023): Found entity 1: vga_controller File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file vga/video_gen.sv
-    Info (12023): Found entity 1: video_gen File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/VGA/video_gen.sv Line: 1
+    Info (12023): Found entity 1: video_gen File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/byteextend.sv
-    Info (12023): Found entity 1: ByteExtend File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ByteExtend.sv Line: 1
+    Info (12023): Found entity 1: ByteExtend File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ByteExtend.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file hardware/uartrx.sv
-    Info (12023): Found entity 1: uartRX File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/uartRX.sv Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at ALU.sv(25): created implicit net for "sub_bout" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ALU.sv Line: 25
+    Info (12023): Found entity 1: uartRX File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu/shiftleft.sv
+    Info (12023): Found entity 1: ShiftLeft File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/ShiftLeft.sv Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at ALU.sv(25): created implicit net for "sub_bout" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 25
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Warning (10030): Net "vgaclk" at CPU.sv(12) has no driver or initial value, using a default initial value '0' File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 12
+Warning (10030): Net "vgaclk" at CPU.sv(12) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 12
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
-Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vgaCont" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 77
-Warning (10230): Verilog HDL assignment warning at vga_controller.sv(32): truncated value with size 32 to match size of target (10) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/VGA/vga_controller.sv Line: 32
-Warning (10230): Verilog HDL assignment warning at vga_controller.sv(34): truncated value with size 32 to match size of target (10) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/VGA/vga_controller.sv Line: 34
-Info (12128): Elaborating entity "video_gen" for hierarchy "video_gen:videoInst" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 88
-Warning (10230): Verilog HDL assignment warning at video_gen.sv(25): truncated value with size 32 to match size of target (4) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/VGA/video_gen.sv Line: 25
-Warning (10230): Verilog HDL assignment warning at video_gen.sv(26): truncated value with size 32 to match size of target (4) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/VGA/video_gen.sv Line: 26
-Warning (10230): Verilog HDL assignment warning at video_gen.sv(27): truncated value with size 32 to match size of target (10) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/VGA/video_gen.sv Line: 27
-Warning (10230): Verilog HDL assignment warning at video_gen.sv(28): truncated value with size 32 to match size of target (10) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/VGA/video_gen.sv Line: 28
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vgaCont" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 78
+Warning (10230): Verilog HDL assignment warning at vga_controller.sv(32): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv Line: 32
+Warning (10230): Verilog HDL assignment warning at vga_controller.sv(34): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv Line: 34
+Info (12128): Elaborating entity "video_gen" for hierarchy "video_gen:videoInst" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 89
+Warning (10230): Verilog HDL assignment warning at video_gen.sv(25): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 25
+Warning (10230): Verilog HDL assignment warning at video_gen.sv(26): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 26
+Warning (10230): Verilog HDL assignment warning at video_gen.sv(27): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 27
+Warning (10230): Verilog HDL assignment warning at video_gen.sv(28): truncated value with size 32 to match size of target (10) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv Line: 28
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "tablero" into its bus
-Info (12128): Elaborating entity "uartRX" for hierarchy "uartRX:receiver" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 101
-Warning (10230): Verilog HDL assignment warning at uartRX.sv(54): truncated value with size 32 to match size of target (16) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/uartRX.sv Line: 54
-Warning (10230): Verilog HDL assignment warning at uartRX.sv(61): truncated value with size 32 to match size of target (4) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/uartRX.sv Line: 61
-Warning (10230): Verilog HDL assignment warning at uartRX.sv(63): truncated value with size 32 to match size of target (16) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/uartRX.sv Line: 63
-Warning (10230): Verilog HDL assignment warning at uartRX.sv(74): truncated value with size 32 to match size of target (16) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/uartRX.sv Line: 74
-Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 122
-Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 135
-Info (12128): Elaborating entity "GPR" for hierarchy "RegisterFile:c2|GPR:r0" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/RegisterFile.sv Line: 42
-Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 145
-Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 152
-Warning (10030): Net "instruction_set.data_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ROM.sv Line: 8
-Warning (10030): Net "instruction_set.waddr_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ROM.sv Line: 8
-Warning (10030): Net "instruction_set.we_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ROM.sv Line: 8
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 163
-Warning (10858): Verilog HDL warning at ALU.sv(9): object sub_cout used but never assigned File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ALU.sv Line: 9
-Warning (10030): Net "sub_cout" at ALU.sv(9) has no driver or initial value, using a default initial value '0' File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ALU.sv Line: 9
-Info (12128): Elaborating entity "Adder" for hierarchy "ALU:c5|Adder:adder" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ALU.sv Line: 19
-Info (12128): Elaborating entity "Subtractor" for hierarchy "ALU:c5|Subtractor:subtractor" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/ALU.sv Line: 27
-Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 168
-Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 173
-Warning (10230): Verilog HDL assignment warning at SignExtend.sv(10): truncated value with size 32 to match size of target (24) File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/SignExtend.sv Line: 10
-Info (12128): Elaborating entity "ByteExtend" for hierarchy "ByteExtend:extender" File: C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/hardware/CPU.sv Line: 178
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (144001): Generated suppressed messages file C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/output_files/SnakeComputer.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 22 warnings
-    Info: Peak virtual memory: 4934 megabytes
-    Info: Processing ended: Wed Jun 18 15:04:52 2025
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:05
+Info (12128): Elaborating entity "uartRX" for hierarchy "uartRX:receiver" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 102
+Warning (10230): Verilog HDL assignment warning at uartRX.sv(54): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 54
+Warning (10230): Verilog HDL assignment warning at uartRX.sv(61): truncated value with size 32 to match size of target (4) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 61
+Warning (10230): Verilog HDL assignment warning at uartRX.sv(63): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 63
+Warning (10230): Verilog HDL assignment warning at uartRX.sv(74): truncated value with size 32 to match size of target (16) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv Line: 74
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:c1" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 123
+Warning (10272): Verilog HDL Case Statement warning at ControlUnit.sv(167): case item expression covers a value already covered by a previous case item File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv Line: 167
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:c2" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 136
+Info (12128): Elaborating entity "GPR" for hierarchy "RegisterFile:c2|GPR:r0" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv Line: 42
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:c3" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 146
+Info (12128): Elaborating entity "ROM" for hierarchy "ROM:c4" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 153
+Warning (10030): Net "instruction_set.data_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
+Warning (10030): Net "instruction_set.waddr_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
+Warning (10030): Net "instruction_set.we_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv Line: 8
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:c5" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 164
+Warning (10858): Verilog HDL warning at ALU.sv(9): object sub_cout used but never assigned File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
+Warning (10030): Net "sub_cout" at ALU.sv(9) has no driver or initial value, using a default initial value '0' File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 9
+Info (12128): Elaborating entity "Adder" for hierarchy "ALU:c5|Adder:adder" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 19
+Info (12128): Elaborating entity "Subtractor" for hierarchy "ALU:c5|Subtractor:subtractor" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 27
+Info (12128): Elaborating entity "Multiplier" for hierarchy "ALU:c5|Multiplier:multiplier" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 33
+Info (12128): Elaborating entity "ShiftLeft" for hierarchy "ALU:c5|ShiftLeft:shift" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv Line: 39
+Info (12128): Elaborating entity "ImmExtend" for hierarchy "ImmExtend:c6" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 169
+Info (12128): Elaborating entity "SignExtend" for hierarchy "SignExtend:c7" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 174
+Warning (10230): Verilog HDL assignment warning at SignExtend.sv(10): truncated value with size 32 to match size of target (24) File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv Line: 10
+Info (12128): Elaborating entity "ByteExtend" for hierarchy "ByteExtend:extender" File: C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv Line: 179
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (144001): Generated suppressed messages file C:/Users/eboli/Documents/Github/digital_design_proyecto_final/output_files/SnakeComputer.map.smsg
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 5012 megabytes
+    Info: Processing ended: Sun Jun 22 06:37:08 2025
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:29
 
 
 +--------------------------------------------+
 ; Analysis & Elaboration Suppressed Messages ;
 +--------------------------------------------+
-The suppressed messages can be found in C:/Users/User/Downloads/digital_design_proyecto_final-Ajustes/digital_design_proyecto_final-Ajustes/output_files/SnakeComputer.map.smsg.
+The suppressed messages can be found in C:/Users/eboli/Documents/Github/digital_design_proyecto_final/output_files/SnakeComputer.map.smsg.
 
 
