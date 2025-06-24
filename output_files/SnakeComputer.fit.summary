@@ -1,12 +1,12 @@
-Fitter Status : Successful - Tue Jun 24 01:56:18 2025
+Fitter Status : Successful - Tue Jun 24 03:45:58 2025
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : SnakeComputer
 Top-level Entity Name : CPU
 Family : Cyclone V
 Device : 5CSXFC6D6F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 2,706 / 41,910 ( 6 % )
-Total registers : 1461
+Logic utilization (in ALMs) : 2,358 / 41,910 ( 6 % )
+Total registers : 1473
 Total pins : 36 / 499 ( 7 % )
 Total virtual pins : 0
 Total block memory bits : 14,080 / 5,662,720 ( < 1 % )

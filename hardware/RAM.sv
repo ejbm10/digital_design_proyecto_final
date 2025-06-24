@@ -61,8 +61,12 @@ module RAM (
     end
 
     always_comb begin
-        if (A >= 32'h1000 && A < 32'h3000)
-            ReadData = q_a;
+        if (A >= 32'h1000 && A < 32'h3000) begin
+            if (MemWrite && (((A - 32'h1000) >> 2) == addr_a))
+						ReadData = WriteData;
+				  else
+						ReadData = q_a;
+			end
         else if (A <= 32'hFFFFFFFC)
             ReadData = Stack[(32'hFFFFFFFC - A) >> 2];
         else if (A == 32'h4000)

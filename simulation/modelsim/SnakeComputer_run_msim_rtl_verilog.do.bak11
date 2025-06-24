@@ -17,7 +17,6 @@ vmap work rtl_work
 vlog "C:/Users/eboli/Documents/Github/digital_design_proyecto_final/clkIP_sim/clkIP.vo"
 
 vlog -vlog01compat -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/RAM2.v}
-vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/MatrizAdapter.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Multiplier.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Subtractor.sv}
 vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv}
