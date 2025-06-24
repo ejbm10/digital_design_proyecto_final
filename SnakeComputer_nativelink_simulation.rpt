@@ -1,5 +1,5 @@
 Info: Start Nativelink Simulation process
-Info: NativeLink has detected Verilog design -- Verilog simulation models will be used
+executing command line: ip-make-simscript --nativelink-mode --output-directory=SnakeComputer_iputf_input --spd=C:/Users/eboli/Documents/Github/digital_design_proyecto_final/clkIP.spd 
 
 ========= EDA Simulation Settings =====================
 

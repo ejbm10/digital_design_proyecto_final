@@ -1,3 +1,4 @@
+`timescale 1 ps / 1 ps
 module SignExtend_tb();
 
 	logic [23:0] offset;

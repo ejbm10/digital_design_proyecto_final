@@ -1,3 +1,4 @@
+`timescale 1 ps / 1 ps
 module ImmExtend_tb();
 
 	logic [11:0] imm_in;

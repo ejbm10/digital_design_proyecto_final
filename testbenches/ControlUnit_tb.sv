@@ -1,3 +1,4 @@
+`timescale 1 ps / 1 ps
 module ControlUnit_tb();
 
 	logic [11:0] opcode;

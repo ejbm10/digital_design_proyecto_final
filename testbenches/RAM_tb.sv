@@ -1,3 +1,4 @@
+`timescale 1 ps / 1 ps
 module RAM_tb();
 	
 	logic clk, rst, MemWrite;

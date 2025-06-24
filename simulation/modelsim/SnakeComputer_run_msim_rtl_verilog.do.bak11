@@ -1,31 +1,44 @@
 transcript on
+if ![file isdirectory SnakeComputer_iputf_libs] {
+	file mkdir SnakeComputer_iputf_libs
+}
+
 if {[file exists rtl_work]} {
 	vdel -lib rtl_work -all
 }
 vlib rtl_work
 vmap work rtl_work
 
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/VGA {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/VGA/MatrizAdapter.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/ALU {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/ALU/Multiplier.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/ALU {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/ALU/Subtractor.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/ALU {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/ALU/Adder.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/ALU.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/ROM.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/RAM.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/GPR.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/CPU.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/ControlUnit.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/RegisterFile.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/ImmExtend.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/SignExtend.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/VGA {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/VGA/vga_controller.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/VGA {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/VGA/video_gen.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/ByteExtend.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/uartRX.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/ALU {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/ALU/ShiftLeft.sv}
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/hardware/ClockDivider.sv}
+###### Libraries for IPUTF cores 
+###### End libraries for IPUTF cores 
+###### MIF file copy and HDL compilation commands for IPUTF cores 
 
-vlog -sv -work work +incdir+C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/testbenches {C:/Users/kenda/OneDrive/Desktop/Snake/digital_design_proyecto_final/testbenches/CPU_tb.sv}
+
+vlog "C:/Users/eboli/Documents/Github/digital_design_proyecto_final/clkIP_sim/clkIP.vo"
+
+vlog -vlog01compat -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/RAM2.v}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/MatrizAdapter.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Multiplier.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Subtractor.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/Adder.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ALU.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ROM.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RAM.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/GPR.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/CPU.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ControlUnit.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/RegisterFile.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ImmExtend.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/SignExtend.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/SignExtend_tb.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/vga_controller.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/VGA/video_gen.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ByteExtend.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/uartRX.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/ALU/ShiftLeft.sv}
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/hardware/ClockDivider.sv}
+
+vlog -sv -work work +incdir+C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches {C:/Users/eboli/Documents/Github/digital_design_proyecto_final/testbenches/CPU_tb.sv}
 
 vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  CPU_tb
 

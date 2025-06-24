@@ -1,0 +1,165 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'ClockDivider:sleeper|clk_out'
+Slack : -76.372
+TNS   : -68459.106
+
+Type  : Slow 1100mV 85C Model Setup 'clk'
+Slack : -33.097
+TNS   : -12960.807
+
+Type  : Slow 1100mV 85C Model Setup 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 35.983
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'clk'
+Slack : 0.374
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'ClockDivider:sleeper|clk_out'
+Slack : 0.549
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.668
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'ClockDivider:sleeper|clk_out'
+Slack : -2.174
+TNS   : -1152.422
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.325
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk'
+Slack : 8.803
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 19.169
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'ClockDivider:sleeper|clk_out'
+Slack : -74.919
+TNS   : -67168.859
+
+Type  : Slow 1100mV 0C Model Setup 'clk'
+Slack : -35.074
+TNS   : -13723.939
+
+Type  : Slow 1100mV 0C Model Setup 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 36.099
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'clk'
+Slack : 0.218
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'ClockDivider:sleeper|clk_out'
+Slack : 0.577
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.708
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'ClockDivider:sleeper|clk_out'
+Slack : -2.174
+TNS   : -1076.706
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.325
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk'
+Slack : 8.753
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 19.121
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'ClockDivider:sleeper|clk_out'
+Slack : -44.613
+TNS   : -39993.322
+
+Type  : Fast 1100mV 85C Model Setup 'clk'
+Slack : -8.981
+TNS   : -3422.441
+
+Type  : Fast 1100mV 85C Model Setup 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 37.506
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'clk'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'ClockDivider:sleeper|clk_out'
+Slack : 0.256
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.300
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'ClockDivider:sleeper|clk_out'
+Slack : -2.174
+TNS   : -540.918
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.325
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk'
+Slack : 8.708
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 19.416
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'ClockDivider:sleeper|clk_out'
+Slack : -40.276
+TNS   : -36083.092
+
+Type  : Fast 1100mV 0C Model Setup 'clk'
+Slack : -7.775
+TNS   : -2955.663
+
+Type  : Fast 1100mV 0C Model Setup 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 37.677
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'clk'
+Slack : 0.171
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'ClockDivider:sleeper|clk_out'
+Slack : 0.270
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.292
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'ClockDivider:sleeper|clk_out'
+Slack : -2.174
+TNS   : -515.068
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.325
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk'
+Slack : 8.670
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clkdiv|clkip_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 19.406
+TNS   : 0.000
+
+------------------------------------------------------------

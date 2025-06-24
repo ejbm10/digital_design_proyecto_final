@@ -1,22 +1,30 @@
 module MatrizAdapter(
-    input  logic clk,
-    input  logic rst,
-    input  logic [31:0] MemorySpace [0:2047],
+    input logic clk,
+    input logic rst,
+    input logic [31:0] adapter_data,
+    output logic [10:0] adapter_addr,
     output logic [3:0] matriz [9:0][9:0]
 );
 
+    int index;
+    int fila;
+    int col;
+
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
-            for (int i = 0; i < 10; i++)
-                for (int j = 0; j < 10; j++)
-                    matriz[i][j] <= 4'd0;
+            index <= 0;
         end else begin
-            for (int fila = 0; fila < 10; fila++) begin
-                for (int col = 0; col < 10; col++) begin
-                    matriz[fila][col] <= MemorySpace[(fila * 10 + col)][3:0];  // Solo 4 bits LSB
-                end
-            end
+            fila = index / 10;
+            col  = index % 10;
+            matriz[fila][col] <= adapter_data[3:0];
+
+            if (index == 99)
+                index <= 0;
+            else
+                index <= index + 1;
         end
     end
+
+    assign adapter_addr = index;
 
 endmodule

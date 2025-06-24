@@ -37,12 +37,7 @@ module CPU (
 	
 	 logic [9:0] y = 0;
 	 
-	 logic [31:0] MemorySpace [0:2047];
-	 
 	 logic [3:0] matriz [9:0][9:0];
-
-	
-	
 	
 	 wire [7:0] rx_data;
     wire rx_valid;
@@ -56,13 +51,12 @@ module CPU (
 		.clk_out(cpu_clk)
 	);
  
-	 //clkIP clkdiv(
-		//	.refclk(clk),   //  refclk.clk
-		//.rst(rst),      //   reset.reset
-		//.outclk_0(vgaclk), // outclk0.clk
-		//.locked()
-	 
-	 //);
+	 clkIP clkdiv(
+		.refclk(clk),   //  refclk.clk
+		.rst(rst),      //   reset.reset
+		.outclk_0(vgaclk), // outclk0.clk
+		.locked()
+	 );
 	
 	uartRX receiver (
 			  .clk(clk),
@@ -112,20 +106,13 @@ module CPU (
 		.rst(rst),
 		.MemWrite(MemWrite),
 		.A(a_mux),
+		.adapter_addr(adapter_addr),
 		.WriteData((inst[15:12] == 4'b1110) ? LR : R3),
 		.ReadData(ReadData),
 		.uart_data(uart_data_ext),
-		.MemorySpace(MemorySpace)
-		
+		.adapter_data(adapter_rd),
+		.matriz(matriz)
 	);
-		
-	MatrizAdapter matAdapter (
-    .clk(cpu_clk),
-    .rst(rst),
-    .MemorySpace(MemorySpace),  // ACCESO DIRECTO A RAM
-    .matriz(matriz)
-	);
-
 	
 	ROM c4 (
 		.clk(cpu_clk),
