@@ -31,7 +31,7 @@ module RAM (
     );
     
     logic [31:0] Stack [0:9];
-
+	
     always_ff @(negedge clk or posedge rst) begin
         if (rst) begin
             for (int i = 0; i < 10; i++)
@@ -62,10 +62,7 @@ module RAM (
 
     always_comb begin
         if (A >= 32'h1000 && A < 32'h3000) begin
-            if (MemWrite && (((A - 32'h1000) >> 2) == addr_a))
-						ReadData = WriteData;
-				  else
-						ReadData = q_a;
+            ReadData = q_a;
 			end
         else if (A <= 32'hFFFFFFFC)
             ReadData = Stack[(32'hFFFFFFFC - A) >> 2];
